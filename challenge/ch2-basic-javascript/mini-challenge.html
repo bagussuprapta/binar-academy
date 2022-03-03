@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet"> 
+  <style>
+    * {
+      font-family: Inter;
+    }
+  </style>
+  <title>Mini Challenge</title>
+</head>
+<body>
+  <p>See whats going on in console</p>
+  <script>
+    let x = 100;
+    let y = 10;
+
+    if(x == y) {
+      console.log("Nilainya sama");
+    } else {
+      console.log("Nilainya berbeda");
+    }
+
+    let buah = ["Apel", "Jeruk", "Semangka"];
+    let warna = ["Merah", "Kuning", "Hijau"];
+
+    // Jeruk berwarna kuning
+    let jeruk = {
+      namaBuah: buah[1],
+      warnaBuah: warna[2]
+    }
+
+    if(jeruk.warnaBuah == "Kuning") {
+      console.log("Jeruk berwarna kuning");
+    } else {
+      console.log("Jeruk tidak berwarna kuning");
+    }
+
+  </script>
+</body>
+</html>
