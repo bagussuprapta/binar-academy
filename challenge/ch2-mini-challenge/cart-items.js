@@ -129,8 +129,8 @@ function getCategory(items){
 */
 function getPromoPrice(items){
   let total = 0;
-  for(const item in items)
-    total += items[item].quantity * items[item].promoPrice;
+  for(const item of items)
+    total += item.quantity * item.promoPrice;
   return total;
 }
 
