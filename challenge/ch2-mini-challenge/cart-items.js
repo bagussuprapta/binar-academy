@@ -131,7 +131,7 @@ function getTotal(items){
   let total = 0;
   for(const item in items)
     total += items[item].quantity * items[item].promoPrice;
-  return parseInt(total);
+  return total;
 }
 
 console.log(getCartItems(data));
