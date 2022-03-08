@@ -127,7 +127,7 @@ function getCategory(items){
         * kalikan quantity dan price dari tiap item 
         * total harga dari keseluruhan item
 */
-function getTotal(items){
+function getPromoPrice(items){
   let total = 0;
   for(const item in items)
     total += items[item].quantity * items[item].promoPrice;
@@ -137,4 +137,4 @@ function getTotal(items){
 console.log(getCartItems(data));
 console.log(getItems(getCartItems(data)));
 console.log(getCategory(getItems(getCartItems(data))));
-console.log(`Total: ${getTotal(getItems(getCartItems(data)))}`);
+console.log(`Total: ${getPromoPrice(getItems(getCartItems(data)))}`);
