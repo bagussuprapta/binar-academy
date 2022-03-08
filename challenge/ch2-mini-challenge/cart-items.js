@@ -97,8 +97,8 @@ const data = {
 // 1. Bikin function untuk return data dari cart items
 function getCartItems(data) {
   let result = [];
-  for(let i = 0; i < data.cartItems.length; i++){
-    result.push(data.cartItems[i])
+  for(cartItem in data.cartItems){
+    result.push(data.cartItems[cartItem]);
   }
   return result;
 }
@@ -137,4 +137,4 @@ function getTotal(items){
 console.log(getCartItems(data));
 console.log(getItems(getCartItems(data)));
 console.log(getCategory(getItems(getCartItems(data))));
-console.log("Total: ", getTotal(getItems(getCartItems(data))));
+console.log(`Total: ${getTotal(getItems(getCartItems(data)))}`);
