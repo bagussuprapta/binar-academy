@@ -15,10 +15,14 @@ let nameStudent = "Gusde";
 // 5. Array ke string dengan JOIN method 
 
 function reverseName(name){
-  let names = [{name: name}];
-  for(const char in names){
-    names[char]["split"] = names[char].name.split('');
-    names[char]["reverse"] = names[char].split.reverse();
+  let names = [{name: name,
+                split: [],
+                reverse: [],
+                join: ""}];
+  for(const i in names){
+    names[i].split = names[i].name.split('');
+    names[i].reverse = names[i].split.reverse();
+    names[i].join = names[i].reverse.join('');
   }
   return names;
 }
