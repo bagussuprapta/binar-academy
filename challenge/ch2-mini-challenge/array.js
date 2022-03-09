@@ -14,15 +14,13 @@ let nameStudent = "Gusde";
 // 4. Di dalam lopping, reverse elemen dalam array nya dengan REVERSE method
 // 5. Array ke string dengan JOIN method 
 
-function reverseName(name){
-  let names = [{name: name,
-                split: [],
-                reverse: [],
-                join: ""}];
-  for(const i in names){
-    names[i].split = names[i].name.split('');
-    names[i].reverse = names[i].split.reverse();
-    names[i].join = names[i].reverse.join('');
+function reverseName(...name){
+  let names = [{}];
+  for(const i in name){
+    names[i]["name"] = name[i];
+    names[i]["split"] = name[i].split('');
+    names[i]["reverse"] = names[i].split.reverse();
+    names[i]["join"] = names[i].reverse.join('');
   }
   return names;
 }
