@@ -179,6 +179,15 @@ function getEbookOnly(items){
   return result;
 }
 
+// 9. Buat function promoProduct yang berfunsi untuk return item yang ada promonya saja
+function getPromoProduct(items){
+  let result = [];
+  for(const item in items)
+    if(items[item].promoPrice < items[item].price)
+      result.push(items[item]);
+  return result;
+}
+
 // 1. console.log(getCartItems(data));
 // 2. console.log(getItems(getCartItems(data)));
 // 3. console.log(getCategory(getItems(getCartItems(data))));
