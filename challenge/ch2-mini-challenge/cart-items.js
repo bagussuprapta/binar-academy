@@ -157,6 +157,15 @@ function getCategoryAndPromoPrice(items){
   return result;
 }
 
+// 7. Print nama author dari tiap authornya
+function getAuthor(items){
+  let result = [];
+  for(const item in items)
+    for(const author in items[item].authors)
+    result.push(items[item].authors[author]);
+  return result;
+}
+
 // 1. console.log(getCartItems(data));
 // 2. console.log(getItems(getCartItems(data)));
 // 3. console.log(getCategory(getItems(getCartItems(data))));
