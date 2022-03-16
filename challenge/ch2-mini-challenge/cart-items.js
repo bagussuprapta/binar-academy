@@ -134,7 +134,18 @@ function getPromoPrice(items){
   return total;
 }
 
-console.log(getCartItems(data));
-console.log(getItems(getCartItems(data)));
-console.log(getCategory(getItems(getCartItems(data))));
-console.log(`Total: ${getPromoPrice(getItems(getCartItems(data)))}`);
+// 5. Jadikan no 1 dan 2 dalam satu function
+function getItemsV2(data){
+  let result = getCartItems(data);
+  return getItems(result);
+}
+
+// 1. console.log(getCartItems(data));
+// 2. console.log(getItems(getCartItems(data)));
+// 3. console.log(getCategory(getItems(getCartItems(data))));
+// 4. console.log(`Total: ${getPromoPrice(getItems(getCartItems(data)))}`);
+// 5. console.log(getItemsV2(data));
+// 6. console.log(getCategoryAndPromoPrice(getItems(getCartItems(data))));
+// 7. console.log(getAuthor(getItems(getCartItems(data))));
+// 8. console.log(getEbookOnly(getItems(getCartItems(data))));
+// 9. console.log(getPromoProduct(getItems(getCartItems(data))));
