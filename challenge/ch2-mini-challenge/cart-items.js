@@ -166,6 +166,19 @@ function getAuthor(items){
   return result;
 }
 
+/**
+  8. Buat function baru yang hanya melakukan print data pada item yg
+    formatnya Ebook (gunakan function yg udah ada sebelumnya yg kalian
+    gunakan utk print data category, total price dan nama author) 
+*/
+function getEbookOnly(items){
+  let result = [];
+  for(const item in items)
+    if(items[item].format == "EBook")
+      result.push(items[item]);
+  return result;
+}
+
 // 1. console.log(getCartItems(data));
 // 2. console.log(getItems(getCartItems(data)));
 // 3. console.log(getCategory(getItems(getCartItems(data))));
