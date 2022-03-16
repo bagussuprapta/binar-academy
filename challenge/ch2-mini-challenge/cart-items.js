@@ -140,6 +140,23 @@ function getItemsV2(data){
   return getItems(result);
 }
 
+// 6. Jadikan no 3 dan 4 dalam satu function
+function getCategoryAndPromoPrice(items){
+  let result = [
+    category = [],
+    totalPrice = 0,
+  ];
+
+  for(const item in items)
+    if(items[item].category != "" && !result[0].includes(items[item].category))
+      result[0].push(items[item].category);
+
+  for(const item of items)
+    result[1] += item.quantity * item.promoPrice;
+
+  return result;
+}
+
 // 1. console.log(getCartItems(data));
 // 2. console.log(getItems(getCartItems(data)));
 // 3. console.log(getCategory(getItems(getCartItems(data))));
