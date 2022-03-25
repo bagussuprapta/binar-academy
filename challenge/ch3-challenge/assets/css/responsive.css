@@ -1,0 +1,42 @@
+@media screen and (max-width: 1200px) {
+}
+
+@media screen and (max-width: 992px) {
+  .navbar-collapse {
+    position: fixed;
+    top: 50px;
+    right: 0;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 15px;
+    width: 40%;
+    height: 100%;
+  }
+
+  .navbar-collapse.collapsing {
+    right: -75%;
+    transition: height 0s ease;
+  }
+
+  .navbar-collapse.show {
+    right: 0;
+    transition: right 300ms ease-in-out;
+  }
+
+  .navbar-toggler.collapsed ~ .navbar-collapse {
+    transition: right 500ms ease-in-out;
+  }
+
+  .btn {
+    padding: 0.355rem 0.55rem;
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+
+}
+
+@media screen and (max-width: 576px) {
+
+}
