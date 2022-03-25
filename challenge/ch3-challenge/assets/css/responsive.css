@@ -70,6 +70,12 @@
   .intro-img {
     margin-top: 20px;
   }
+
+  .img-reviewer {
+    height: 60px;
+    border-radius: 50vh;
+    margin-bottom: 20px;
+  }
 }
 
 @media screen and (max-width: 576px) {
