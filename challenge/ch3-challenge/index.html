@@ -7,6 +7,8 @@
 
   <!-- Bootstarp CSS -->
   <link rel="stylesheet" href="../../assets/vendor/bootstrap/css/bootstrap.css">
+  <link rel="stylesheet" href="../../assets/vendor/owl-carousel/dist/assets/owl.carousel.min.css">
+  <link rel="stylesheet" href="../../assets/vendor/owl-carousel/dist/assets/owl.theme.default.min.css">
 
   <!-- Custom Style -->
   <link rel="stylesheet" href="assets/css/style.css">
@@ -172,8 +174,81 @@
       </article>
       <!-- End Why Us -->
       
+      <!-- Testi -->
+      <article id="testi">
+        <header class="container mt-5">
+          <div class="row">
+            <div class="col-12 text-center">
+              <h2>Testimonial</h2>
+              <p>Various positive reviews from our customers</p>
+            </div>
+          </div>
+        </header>
+        <section class="container-fluid">
+          <div class="owl-carousel owl-theme">
+            <div class="row bg-light align-items-center item p-5 rounded testi-card">
+              <div class="col-3">
+                <img class="img-fluid rounded-circle" src="assets/images/drawkit-person-female.svg" alt="">
+              </div>
+              <div class="col-9">
+                <p></p>
+                <p>“I found this site when my trip to Bali had to be extended due to a family illness. I had already spent a fortune renting cars”</p>
+                <p><b>Martina, England</b></p>
+              </div>
+            </div>
+            <div class="row bg-light align-items-center item p-5 rounded testi-card">
+              <div class="col-3">
+                <img class="img-fluid rounded-circle" src="assets/images/drawkit-person-kid.svg" alt="">
+              </div>
+              <div class="col-9">
+                <p></p>
+                <p>“I have rented with them a few times now and I always compare with other sites. BCR are always the best value and cools”</p>
+                <p><b>Kaddy, New York</b></p>
+              </div>
+            </div>
+            <div class="row bg-light align-items-center item p-5 rounded testi-card">
+              <div class="col-3">
+                <img class="img-fluid rounded-circle" src="assets/images/drawkit-person-male.svg" alt="">
+              </div>
+              <div class="col-9">
+                <p></p>
+                <p>“The app is fine in general but, importantly, it did not allow me to view the rental voucher without a network connection”</p>
+                <p><b>Shua, China</b></p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </article>
+      <!-- End Testi -->
+
     </div>
   </main>
   <script src="../../assets/vendor/bootstrap/js/bootstrap.js"></script>
+  <script src="../../assets/vendor/owl-carousel/docs/assets/vendors/jquery.min.js"></script>
+  <script src="../../assets/vendor/owl-carousel/dist/owl.carousel.min.js"></script>
+  <script>
+    $('.owl-carousel').owlCarousel({
+      loop: true,
+      center: true,
+      nav: true,
+      margin: 15,
+      dots: false,
+      navText: [
+        "<img src='assets/images/arrow-left-circle-fill.svg' style='height: 20px; width: 20px;'>",
+        "<img src='assets/images/arrow-right-circle-fill.svg' style='height: 20px; width: 20px;'>"
+      ],
+      responsive: {
+        0: {
+          items: 1
+        },
+        600: {
+          items: 1
+        },
+        1000: {
+          items: 2
+        }
+      }
+    })
+  </script>
 </body>
 </html>

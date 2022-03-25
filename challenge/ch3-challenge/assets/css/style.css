@@ -79,3 +79,20 @@ h2, h5 {
 .card-title, .card-text {
   margin-top: 16px;
 }
+
+.container-fluid {
+  padding: 0px;
+}
+
+.item {
+  cursor: grab;
+  background-color: #F1F3FF;
+}
+
+.testi-card {
+  margin: 10px;
+}
+
+.owl-carousel:hover{
+  background: none;
+}
