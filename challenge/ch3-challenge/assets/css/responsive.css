@@ -31,10 +31,45 @@
     padding: 0.355rem 0.55rem;
     font-size: 14px;
   }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+  
+  p {
+    font-size: 14px;
+  }
+
+  .our-services-img,
+  .our-services-list {
+    margin-top: 20px;
+  }
+
+  .list-unstyled li {
+    padding: 0.325rem 0.35rem;
+    font-size: 14px;
+  }
 }
 
 @media screen and (max-width: 768px) {
+  h2 {
+    font-size: 1.3rem;
+  }
 
+  p {
+    font-size: 14px;
+  }
+
+  .btn,
+  .list-unstyled li {
+    padding: 0.325rem 0.35rem;
+    font-size: 13px;
+  }
+
+  .intro-text,
+  .intro-img {
+    margin-top: 20px;
+  }
 }
 
 @media screen and (max-width: 576px) {
