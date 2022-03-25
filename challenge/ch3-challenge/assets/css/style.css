@@ -71,3 +71,11 @@ html {
 h2, h5 {
   font-weight: bold;
 }
+
+.why-us-card-item {
+  margin-top: 20px;
+}
+
+.card-title, .card-text {
+  margin-top: 16px;
+}
