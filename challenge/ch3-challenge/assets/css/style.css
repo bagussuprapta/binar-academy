@@ -96,3 +96,16 @@ h2, h5 {
 .owl-carousel:hover{
   background: none;
 }
+
+.accordion-button:focus {
+  box-shadow: none;
+}
+
+.accordion-button:not(.collapsed) {
+  color: white;
+  background-color: #4e1e1a;
+}
+
+.accordion-button:not(.collapsed)::after {
+  background-image: none;
+}
