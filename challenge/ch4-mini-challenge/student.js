@@ -6,6 +6,13 @@ const student = [
     age: 23,
     status: "single",
   }),
+  (joko = {
+    firstName: "Joko",
+    lastName: "Widodo",
+    province: "Jawa Barat",
+    age: 15,
+    status: "married",
+  })
 ];
 
 function introduce(student, isFromWestJava, isOver22, isSingle) {
@@ -19,6 +26,21 @@ function introduce(student, isFromWestJava, isOver22, isSingle) {
 console.log(
   introduce(
     student[0],
+    (province) => {
+      return province == "Jawa Barat" ? true : false;
+    },
+    (age) => {
+      return age > 22 ? true : false;
+    },
+    (status) => {
+      return status == "single" ? true : false;
+    }
+  )
+);
+
+console.log(
+  introduce(
+    student[1],
     (province) => {
       return province == "Jawa Barat" ? true : false;
     },
