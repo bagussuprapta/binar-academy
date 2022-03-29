@@ -15,6 +15,18 @@ const student = [
   })
 ];
 
+function isFromWestJava(province){
+  return province == "Jawa Barat" ? true : false;
+}
+
+function isOver22(age){
+  return age > 22 ? true : false;
+}
+
+function isSingle(status){
+  return status == "single" ? true : false;
+}
+
 function introduce(student, isFromWestJava, isOver22, isSingle) {
   let speak = `Nama saya ${student.firstName} ${student.lastName},`;
   speak += isFromWestJava(student.province) ? " Saya tinggal di Jawa Barat," : " Saya tidak tinggal di Jawa Barat,";
@@ -23,32 +35,5 @@ function introduce(student, isFromWestJava, isOver22, isSingle) {
   return speak;
 }
 
-console.log(
-  introduce(
-    student[0],
-    (province) => {
-      return province == "Jawa Barat" ? true : false;
-    },
-    (age) => {
-      return age > 22 ? true : false;
-    },
-    (status) => {
-      return status == "single" ? true : false;
-    }
-  )
-);
-
-console.log(
-  introduce(
-    student[1],
-    (province) => {
-      return province == "Jawa Barat" ? true : false;
-    },
-    (age) => {
-      return age > 22 ? true : false;
-    },
-    (status) => {
-      return status == "single" ? true : false;
-    }
-  )
-);
+console.log(introduce(student[0], isFromWestJava, isOver22, isSingle));
+console.log(introduce(student[1], isFromWestJava, isOver22, isSingle));
