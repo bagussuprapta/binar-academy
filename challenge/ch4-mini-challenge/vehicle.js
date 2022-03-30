@@ -1,34 +1,41 @@
 class Vehicle {
-  constructor(wheel, country){
+  constructor(plate, manufacture, type, transmission, wheel, price, country, year) {
+    this.plate = plate;
+    this.manufacture = manufacture;
+    this.type = type;
+    this.transmission = transmission;
     this.wheel = wheel;
+    this.price = price;
     this.country = country;
+    this.year = year;
   }
 
-  getInfo(){
-    return `Jenis kendaraan roda ${this.wheel} dari negara ${this.country}`;
+  getGeneralInfo() {
+    return `Manufacture: ${this.manufacture}\nPrice: ${this.price}`;
   }
 }
 
 class Car extends Vehicle {
-  constructor(wheel, country, brand, price, taxPercentage){
-    super(wheel, country);
-    this.brand = brand;
-    this.price = price;
-    this.taxPercentage = taxPercentage;
+  constructor(plate, manufacture, type, transmission, wheel, price, country, year, door) {
+    super(plate, manufacture, type, transmission, wheel, price, country, year);
+    this.door = door;
+    this.tax = this.getTotalTax();
+    this.totalPrice = this.tax + this.price;
   }
 
-  getTotalPrice(){
-    return this.price + (this.price * (this.taxPercentage / 100));
+  getTotalTax(){
+    this.tax = (10/100 * this.price) + (2/100 * this.price) + 143000 + 100000 + 250000;
   }
 
-  getInfo(){
-    console.log(super.getInfo());
-    return `Kendaraan ini nama mereknya ${this.brand} dengan total ${car.getTotalPrice().toLocaleString("id-ID")} beserta pajaknya!`;
+  getGeneralInfo(){
+    console.log(super.getGeneralInfo());
+    return `Transmision: ${this.manufacture}\nYear: ${this.year}\nDoor: ${this.door}`;
   }
 }
 
-const vehicle = new Vehicle(4, "United States");
-console.log(vehicle.getInfo(), `\n`);
+const vehicle = new Vehicle("B 423 FG", "Ford", "Car", "Automatic", 4, 5000000000, "United States", 2020);
+const car = new Car("B 423 FG", "Ford", "Car", "Automatic", 4, 5000000000, "United States", 2020, 4);
 
-const car = new Car(4, "Japan", "Suzuki", 2000000000, 10);
-console.log(car.getInfo());
+console.log(vehicle.getGeneralInfo());
+console.log(car.getGeneralInfo());
+
