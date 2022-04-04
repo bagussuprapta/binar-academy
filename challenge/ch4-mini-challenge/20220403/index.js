@@ -1,22 +1,12 @@
-console.log("Hello World");
+const express = require('express');
+const items = require("./person.json");
 
-const os = require("os");
-const areaOfTriangle = require("./segitiga");
-const fs = require("fs");
-const createPerson = require("./create")
+const app = express();
 
-console.log("Free memory: ", os.freemem());
-console.log("Luas segitiga: ", areaOfTriangle(2, 4));
+app.get('/', (req, res) => {
+    res.render('persons.ejs', {
+        data: items
+    })
+})
 
-const value = fs.readFileSync("./note.txt", "utf-8");
-console.log(value);
-
-fs.writeFileSync("./write.txt", "Hello World");
-
-createPerson({
-  name: "Gusde",
-  age: 23,
-  address: "Bali"
-});
-
-console.log(fs.readFileSync("./person.json", "utf-8"));
+app.listen(8000);
