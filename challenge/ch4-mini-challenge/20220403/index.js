@@ -9,3 +9,5 @@ console.log("Luas segitiga: ", areaOfTriangle(2, 4));
 
 const value = fs.readFileSync("./note.txt", "utf-8");
 console.log(value);
+
+fs.writeFileSync("./write.txt", "Hello World");
