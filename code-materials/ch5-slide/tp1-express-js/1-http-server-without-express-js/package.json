@@ -1,0 +1,12 @@
+{
+  "name": "http-server",
+  "version": "1.0.0",
+  "description": "File [`index.js`](./index.js) adalah sebuah file yang berisi implementasi dari\r HTTP server yang ditulis menggunakan Node.js.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
