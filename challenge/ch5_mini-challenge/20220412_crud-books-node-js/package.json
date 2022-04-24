@@ -1,0 +1,30 @@
+{
+  "name": "crud-books-nodejs",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon app",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@gitlab.com/chapter-5-team-4/crud-books-nodejs.git"
+  },
+  "keywords": [],
+  "author": "Gusde, Narantyo, Ghifari, Nilam, Wahyu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/chapter-5-team-4/crud-books-nodejs/issues"
+  },
+  "homepage": "https://gitlab.com/chapter-5-team-4/crud-books-nodejs#readme",
+  "dependencies": {
+    "body-parser": "^1.20.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.3",
+    "mysql": "^2.18.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  },
+  "description": ""
+}
