@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel='stylesheet' href='css/style.css'>
+	<title>Edit Cars</title>
+</head>
+
+<body>
+	<div class="d-flex" id="wrapper">
+		<%- include('partials/_sidebar.ejs') %>
+		<div id="page-content-wrapper" class="bg-light">
+			<%- include('partials/_navbar.ejs') %>
+			<div class="container-fluid">
+				<div class="container mt-3">
+					<div>
+						<%= carsTitle  %>
+					</div>
+
+					<!-- Page content-->
+					<div id="addCar">
+						<div class="mt-4">
+							<h3>Update Car Information</h3>
+							<div class="mt-4">
+								<form action='/admin/edit/<%= item.id %>' method='post' enctype='multipart/form-data'>
+									<div class="bg-white p-5 rounded">
+										<div class="input">
+											<div class="row">
+												<div class="col-2">
+													<p>Nama<span class="bintang"><i class="text-danger">*</i></span></p>
+												</div>
+												<div class="col-5"><input name="nama" class="form-control" value='<%= item.nama %>' type="text"
+														class="form-control form-control-lg" placeholder="Avanza" aria-label="Avanza" id="car-name"
+														aria-describedby="inputGroup-sizing-lg" />
+												</div>
+											</div>
+											<div class="row mt-4">
+												<div class="col-2">
+													<p>Sewa Per Hari<span class="bintang"><i class="text-danger">*</i></span></p>
+												</div>
+												<div class="col-5"><input class="form-control" name="harga" value='<%= item.harga %>'
+														type="text" class="form-control form-control-lg" placeholder="Rp 0,-" aria-label="Username"
+														aria-describedby="inputGroup-sizing-lg"/>
+												</div>
+											</div>
+											<div class="row mt-4">
+												<div class="col-2">
+													<p>Ukuran<span class="bintang" value='<%= item.ukuran %>'><i class="text-danger">*</i></span>
+													</p>
+												</div>
+												<div class="col-5">
+													<select class="form-select" name="ukuran" id="inputGroupSelect04"
+														aria-label="Example select with button addon" placeholder="Small"
+														aria-describedby="inputGroup-sizing-lg">
+														<option id="car-select-size1" value="small">Small</option>
+														<option id="car-select-size2" value="medium">Medium</option>
+														<option id="car-select-size3" value="large">Large</option>
+
+														<% if (item.ukuran) { %>
+															<script type="text/javascript">
+																const size = '<%= item.ukuran %>';
+																const selected = document.createAttribute("selected");
+																selected.value = "selected";
+																
+																if(size == "small"){
+																	document.getElementById("car-select-size1").setAttributeNode(selected);
+																} else if(size == "medium"){
+																	document.getElementById("car-select-size2").setAttributeNode(selected);
+																} else if(size == "large"){
+																	document.getElementById("car-select-size3").setAttributeNode(selected);
+																}
+															</script>
+														<% } %>
+																								
+													</select>
+												</div>
+											</div>
+											<div class="row mt-4">
+												<div class="col-2">
+													<p>Foto<span class="bintang"><i class="text-danger">*</i></span></p>
+												</div>
+												<div class="col-5">
+													<input type="file" name="foto" value='<%= item.foto %>' id="file" multiple
+														class='form-control' />
+													<p>File size max. 2MB</p>
+												</div>
+											</div>
+										</div>
+								</form>
+								<a href="/admin" class="btn btn-outline-primary button-search" type="reset"><strong>Cancel</strong></a>
+								<input class="btn btn-primary button-search" name='submit' type="submit" value="Save">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

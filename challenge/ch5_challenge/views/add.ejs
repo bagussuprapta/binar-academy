@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="css/styles.css" rel="stylesheet" />
+	<title>Add Cars</title>
+</head>
+
+<body>
+	<div class="d-flex" id="wrapper">
+		<%- include('partials/_sidebar.ejs') %>
+		<div id="page-content-wrapper" class="bg-light">
+			<%- include('partials/_navbar.ejs') %>
+			<div class="container-fluid">
+				<div class="container mt-3">
+					<div>
+						<%= carsTitle  %>
+					</div>
+
+					<!-- Page content-->
+					<div id="addCar">
+						<div class="mt-4">
+							<h3>Add New Car</h3>
+							<div class="mt-4">
+								<form action='/admin/add' method='post' enctype='multipart/form-data'>
+									<div class="bg-white p-5 rounded">
+										<div class="input">
+											<div class="row">
+												<div class="col-2">
+													<p>Nama<span class="bintang"><i class="text-danger">*</i></span></p>
+												</div>
+												<div class="col-5"><input name="nama" class="form-control" type="text"
+														class="form-control form-control-lg" placeholder="Avanza" aria-label="Avanza" id="car-name"
+														aria-describedby="inputGroup-sizing-lg" />
+												</div>
+											</div>
+											<div class="row mt-4">
+												<div class="col-2">
+													<p>Sewa Per Hari<span class="bintang"><i class="text-danger">*</i></span></p>
+												</div>
+												<div class="col-5"><input name="harga" class="form-control" type="text"
+														class="form-control form-control-lg" placeholder="Rp 0,-" aria-label="Username"
+														aria-describedby="inputGroup-sizing-lg" />
+												</div>
+											</div>
+											<div class="row mt-4">
+												<div class="col-2">
+													<p>Ukuran<span class="bintang"><i class="text-danger">*</i></span></p>
+												</div>
+												<div class="col-5">
+													<select class="form-select" name="ukuran" id="inputGroupSelect04"
+														aria-label="Example select with button addon" placeholder="Small"
+														aria-describedby="inputGroup-sizing-lg">
+														<option name="ukuran" id="selected" value="small">Small</option>
+														<option name="ukuran" value="medium">Medium</option>
+														<option name="ukuran" value="large">Large</option>
+													</select>
+												</div>
+											</div>
+											<div class="row mt-4">
+												<div class="col-2">
+													<p>Foto<span class="bintang"><i class="text-danger">*</i></span></p>
+												</div>
+												<div class="col-5">
+													<input type="file" name="foto" class="form-control" id="inputGroupFile03"
+														aria-describedby="inputGroupFileAddon03" aria-label="Upload"
+														placeholder="https://placeimg.com/640/480/any"/>
+													<p>File size max. 2MB</p>
+												</div>
+											</div>
+										</div>
+								</form>
+								<a href="/admin" class="btn btn-outline-primary button-search" type="reset"><strong>Cancel</strong></a>
+								<input class="btn btn-primary button-search" name='submit' type="submit" value="Save">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>
