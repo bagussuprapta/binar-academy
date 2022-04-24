@@ -1,0 +1,36 @@
+{
+  "name": "restapi-crud-books-nodejs-and-dashboard-admin",
+  "version": "1.0.0",
+  "description": "RestAPI CRUD Books NodeJS and Dashboard Admin",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@gitlab.com/chapter-5-team-4/restapi-crud-books-nodejs-and-dashboard-admin.git"
+  },
+  "author": "Narantyo, Gusde, Nilam, Wahyu and Ghifari",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/chapter-5-team-4/restapi-crud-books-nodejs-and-dashboard-admin/issues"
+  },
+  "homepage": "https://gitlab.com/chapter-5-team-4/restapi-crud-books-nodejs-and-dashboard-admin#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
+    "ejs": "^3.0.2",
+    "express": "^4.17.3",
+    "imagekit": "^3.2.5",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.4",
+    "pg": "^8.7.3",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.19.0",
+    "sequelize-cli": "^6.4.1"
+  },
+  "keywords": [],
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
