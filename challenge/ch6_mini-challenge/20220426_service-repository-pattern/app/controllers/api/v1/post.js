@@ -10,9 +10,7 @@ module.exports = {
       .then((posts) => {
         res.status(200).json({
           status: "OK",
-          data: {
-            posts,
-          },
+          data: posts
         });
       })
       .catch((err) => {
