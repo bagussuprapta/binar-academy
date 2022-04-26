@@ -83,7 +83,7 @@ module.exports = {
   },
 
   setPost(req, res, next) {
-    Post.findByPk(req.params.id)
+    post.findByPk(req.params.id)
       .then((post) => {
         if (!post) {
           res.status(404).json({

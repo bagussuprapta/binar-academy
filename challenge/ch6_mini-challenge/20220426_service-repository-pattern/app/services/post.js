@@ -1,4 +1,3 @@
-const { create } = require("../controllers/api/v1/post");
 const post = require("../repositories/post");
 
 module.exports = {
@@ -15,5 +14,13 @@ module.exports = {
 
   create(reqBody){
     return post.create(reqBody);
+  },
+
+  update(id, requestBody){
+    return post.update(id, requestBody);
+  },
+
+  findByPk(id){
+    return post.findByPk(id);
   }
 }
