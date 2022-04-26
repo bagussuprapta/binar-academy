@@ -2,11 +2,11 @@
  * @file contains request handler of post resource
  * @author Fikri Rahmat Nurhidayat
  */
-const { Post } = require("../../../models");
+const post = require("../../../services/post");
 
 module.exports = {
   list(req, res) {
-    Post.findAll()
+    post.list()
       .then((posts) => {
         res.status(200).json({
           status: "OK",
