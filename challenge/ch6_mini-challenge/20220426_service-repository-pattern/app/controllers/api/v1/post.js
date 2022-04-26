@@ -22,7 +22,7 @@ module.exports = {
   },
 
   create(req, res) {
-    Post.create({
+    post.create({
       title: req.body.title,
       body: req.body.body,
     })
