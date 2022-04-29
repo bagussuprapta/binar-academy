@@ -30,6 +30,11 @@ apiRouter.delete(
 );
 
 apiRouter.post("/api/v1/authors", controllers.api.v1.author.create);
+apiRouter.get(
+  "/api/v1/authors/:id",
+  controllers.api.v1.author.setAuthor,
+  controllers.api.v1.author.show
+);
 
 /**
  * TODO: Delete this, this is just a demonstration of
