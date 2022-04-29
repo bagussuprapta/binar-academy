@@ -8,7 +8,7 @@ const {
   DB_USERNAME = "postgres",
   DB_PASSWORD = "123",
   DB_HOST = "127.0.0.1",
-  DB_NAME = "20220426_service-repository-pattern",
+  DB_NAME = "20220427_rest-api-and-relation-database",
 } = process.env;
 
 module.exports = {
