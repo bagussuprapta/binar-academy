@@ -4,7 +4,9 @@
  */
 
 const post = require("./post");
+const author = require("./author");
 
 module.exports = {
   post,
+  author
 };
