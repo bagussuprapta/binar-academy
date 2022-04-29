@@ -20,6 +20,29 @@ module.exports = {
         });
       });
   },
+
+  setAuthor(req, res, next) {
+    author.findOne(req.params.id)
+      .then((author) => {
+        if (!author) {
+          res.status(404).json({
+            status: "FAIL",
+            message: "Author not found!",
+          });
+          return;
+        }
+
+        req.author = author;
+        next()
+      })
+      .catch((err) => {
+        res.status(404).json({
+          status: "FAIL",
+          message: "Author not found!",
+        });
+      });
+  },
+
   show(req, res) {
     const author = req.author;
 
