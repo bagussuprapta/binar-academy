@@ -3,12 +3,9 @@
  * @author Gusde
  */
 
-const {
-  DB_USERNAME = "postgres",
-  DB_PASSWORD = "123",
-  DB_HOST = "127.0.0.1",
-  DB_NAME = "database",
-} = process.env;
+require("dotenv").config();
+
+const { DB_USERNAME, DB_PASSWORD, DB_HOST, DB_NAME } = process.env;
 
 module.exports = {
   development: {
