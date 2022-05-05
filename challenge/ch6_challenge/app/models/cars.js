@@ -20,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
     image: DataTypes.STRING,
     rentPerDay: DataTypes.INTEGER,
     capacity: DataTypes.INTEGER,
-    description: DataTypes.STRING,
+    description: DataTypes.TEXT,
     transmision: DataTypes.STRING,
     available: DataTypes.BOOLEAN,
     type: DataTypes.STRING,
