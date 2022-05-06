@@ -3,11 +3,11 @@
  */
 
 const api = require("./api");
-const user = require("./user");
 const mainController = require("./mainController");
+const userController = require("./userController");
 
 module.exports = {
   api,
-  user,
   mainController,
+  userController
 };
