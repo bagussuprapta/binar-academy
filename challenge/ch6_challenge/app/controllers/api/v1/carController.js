@@ -2,6 +2,13 @@ const { Cars } = require("../../../models");
 
 module.exports = {
   create(req, res) {
+    if (req.user?.type !== "Super Admin" && req.user?.type !== "Admin") {
+      res.status(403).json({
+        status: "Forbidden",
+        message: "Only Super Admin and Admin can update car",
+      });
+      return;
+    }
     Cars.create(req.body)
       .then((car) => {
         res.status(201).json({
@@ -46,7 +53,7 @@ module.exports = {
       return;
     }
 
-    await Cars.destroy({where: {plate: req.params.plate}})
-    res.status(200).json({status: "OK"});
+    await Cars.destroy({ where: { plate: req.params.plate } });
+    res.status(200).json({ status: "OK" });
   },
 };

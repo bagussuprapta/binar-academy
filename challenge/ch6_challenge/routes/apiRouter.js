@@ -4,7 +4,11 @@ const express = require("express");
 const router = express.Router();
 
 router.get("/v1/cars", controllers.api.v1.carController.list);
-router.post("/v1/cars/create", controllers.api.v1.carController.create);
+router.post(
+  "/v1/cars/create",
+  controllers.api.v1.adminController.authorize,
+  controllers.api.v1.carController.create
+);
 router.post(
   "/v1/cars/update",
   controllers.api.v1.adminController.authorize,
