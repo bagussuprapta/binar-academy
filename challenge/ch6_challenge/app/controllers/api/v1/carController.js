@@ -36,4 +36,17 @@ module.exports = {
     Cars.update(req.body, { where: { plate: car.plate } });
     res.status(202).json({ status: "Accepted" });
   },
+
+  async delete(req, res) {
+    if (req.user?.type !== "Super Admin" && req.user?.type !== "Admin") {
+      res.status(403).json({
+        status: "Forbidden",
+        message: "Only Super Admin and Admin can update car",
+      });
+      return;
+    }
+
+    await Cars.destroy({where: {plate: req.params.plate}})
+    res.status(200).json({status: "OK"});
+  },
 };

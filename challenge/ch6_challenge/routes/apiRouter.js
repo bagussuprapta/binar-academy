@@ -10,6 +10,11 @@ router.post(
   controllers.api.v1.adminController.authorize,
   controllers.api.v1.carController.update
 );
+router.post(
+  "/v1/cars/delete/:plate",
+  controllers.api.v1.adminController.authorize,
+  controllers.api.v1.carController.delete
+);
 
 router.post("/v1/users/create", controllers.api.v1.userController.create);
 router.post("/v1/users/login", controllers.api.v1.userController.login);
