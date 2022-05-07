@@ -29,6 +29,10 @@ function createToken(payload) {
 module.exports = {
   async create(req, res, err) {
     try {
+      if (req.user.type !== "Super Admin"){
+        res.status(403).json({ message: "Only Super Admin can create Admin" });
+        throw err;
+      }
       if (await Admins.findOne({ where: { username: req.body.username } }))
         throw err;
       req.body.password = await encryptPassword(req.body.password);
@@ -38,11 +42,7 @@ module.exports = {
         username: admin.username,
         type: admin.type,
       });
-    } catch (err) {
-      res.status(422).json({
-        status: "Unprocessable Entity",
-      });
-    }
+    } catch (err) {}
   },
 
   async login(req, res) {
@@ -57,8 +57,20 @@ module.exports = {
       const token = createToken({
         id: admin.id,
         username: admin.username,
+        type: admin.type,
       });
-      res.status(202).json({ status: "Accepted", token});
+      res.status(202).json({ status: "Accepted", token });
+    } catch (err) {
+      res.status(400).json({ err });
+    }
+  },
+
+  async authorize(req, res, next) {
+    try {
+      const token = req.headers.authorization.split("Bearer ")[1];
+      const tokenPayload = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
+      req.user = await Admins.findByPk(tokenPayload.id);
+      next();
     } catch (err) {
       res.status(400).json({ err });
     }
