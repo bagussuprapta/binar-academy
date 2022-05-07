@@ -23,7 +23,7 @@ function checkPassword(password, encryptedPassword) {
 }
 
 function createToken(payload) {
-  return jwt.sign(payload, process.env.ACCESS_TOKEN_SECRET);
+  return jwt.sign(payload, process.env.ACCESS_TOKEN_USER_SECRET);
 }
 
 module.exports = {
@@ -50,5 +50,16 @@ module.exports = {
       username: user.username,
     });
     res.status(200).json({ status: "Login success", token });
+  },
+
+  async authorize(req, res, next) {
+    try {
+      const token = req.headers.authorization.split("Bearer ")[1];
+      const tokenPayload = jwt.verify(token, process.env.ACCESS_TOKEN_USER_SECRET);
+      req.user = await Users.findByPk(tokenPayload.id);
+      next();
+    } catch (err) {
+      res.status(400).json({ err });
+    }
   },
 };

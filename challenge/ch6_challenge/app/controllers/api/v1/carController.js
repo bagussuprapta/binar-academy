@@ -23,4 +23,17 @@ module.exports = {
       data: car,
     });
   },
+
+  async update(req, res) {
+    if (req.user?.type !== "Super Admin" && req.user?.type !== "Admin") {
+      res.status(403).json({
+        status: "Forbidden",
+        message: "Only Super Admin and Admin can update car",
+      });
+      return;
+    }
+    const car = await Cars.findOne({ where: { plate: req.body.plate } });
+    Cars.update(req.body, { where: { plate: car.plate } });
+    res.status(202).json({ status: "Accepted" });
+  },
 };
