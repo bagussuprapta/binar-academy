@@ -23,7 +23,7 @@ function checkPassword(password, encryptedPassword) {
 }
 
 function createToken(payload) {
-  return jwt.sign(payload, process.env.ACCESS_TOKEN_SECRET);
+  return jwt.sign(payload, process.env.ACCESS_TOKEN_ADMIN_SECRET);
 }
 
 module.exports = {
@@ -68,7 +68,7 @@ module.exports = {
   async authorize(req, res, next) {
     try {
       const token = req.headers.authorization.split("Bearer ")[1];
-      const tokenPayload = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
+      const tokenPayload = jwt.verify(token, process.env.ACCESS_TOKEN_ADMIN_SECRET);
       req.user = await Admins.findByPk(tokenPayload.id);
       next();
     } catch (err) {
