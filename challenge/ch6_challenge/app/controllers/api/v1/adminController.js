@@ -29,12 +29,31 @@ function createToken(payload) {
 module.exports = {
   async create(req, res, err) {
     try {
-      if (req.user.type !== "Super Admin"){
+      if (req.user.type !== "Super Admin") {
         res.status(403).json({ message: "Only Super Admin can create Admin" });
         throw err;
       }
       if (await Admins.findOne({ where: { username: req.body.username } }))
         throw err;
+      req.body.password = await encryptPassword(req.body.password);
+      const admin = await Admins.create(req.body);
+      res.status(200).json({
+        status: "Created",
+        username: admin.username,
+        type: admin.type,
+      });
+    } catch (err) {}
+  },
+
+  async createAdmin(req, res) {
+    try {
+      if (await Admins.findOne({ where: { username: req.body.username } })) {
+        res.status(409).json({
+          status: "Conflict",
+          message: "Choose another username",
+        });
+        throw err;
+      }
       req.body.password = await encryptPassword(req.body.password);
       const admin = await Admins.create(req.body);
       res.status(200).json({
@@ -68,7 +87,10 @@ module.exports = {
   async authorize(req, res, next) {
     try {
       const token = req.headers.authorization.split("Bearer ")[1];
-      const tokenPayload = jwt.verify(token, process.env.ACCESS_TOKEN_ADMIN_SECRET);
+      const tokenPayload = jwt.verify(
+        token,
+        process.env.ACCESS_TOKEN_ADMIN_SECRET
+      );
       req.user = await Admins.findByPk(tokenPayload.id);
       next();
     } catch (err) {

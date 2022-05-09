@@ -24,6 +24,11 @@ router.post(
 // Admin api
 router.post("/v1/users/create", controllers.api.v1.userController.create);
 router.post("/v1/users/login", controllers.api.v1.userController.login);
+
+router.post(
+  "/v1/admins/create-admin",
+  controllers.api.v1.adminController.createAdmin
+);
 router.post(
   "/v1/admins/create",
   controllers.api.v1.adminController.authorize,
