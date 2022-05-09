@@ -3,6 +3,7 @@ const controllers = require("../app/controllers");
 const express = require("express");
 const router = express.Router();
 
+// Car api
 router.get("/v1/cars", controllers.api.v1.carController.list);
 router.post(
   "/v1/cars/create",
@@ -20,9 +21,9 @@ router.post(
   controllers.api.v1.carController.delete
 );
 
+// Admin api
 router.post("/v1/users/create", controllers.api.v1.userController.create);
 router.post("/v1/users/login", controllers.api.v1.userController.login);
-
 router.post(
   "/v1/admins/create",
   controllers.api.v1.adminController.authorize,

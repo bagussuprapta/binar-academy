@@ -27,7 +27,7 @@ module.exports = {
   async list(req, res) {
     const car = await Cars.findAll();
     res.status(201).json({
-      data: car,
+      car,
     });
   },
 
