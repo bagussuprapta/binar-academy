@@ -33,8 +33,13 @@ module.exports = {
         res.status(403).json({ message: "Only Super Admin can create Admin" });
         throw err;
       }
-      if (await Admins.findOne({ where: { username: req.body.username } }))
+      if (await Admins.findOne({ where: { username: req.body.username } })){
+        res.status(409).json({
+          status: "Conflict",
+          message: "Choose another username",
+        });
         throw err;
+      }
       req.body.password = await encryptPassword(req.body.password);
       const admin = await Admins.create(req.body);
       res.status(200).json({
