@@ -17,6 +17,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         primaryKey: true,
       },
+      fullname: DataTypes.STRING,
       password: DataTypes.STRING,
       type: DataTypes.ENUM({
         values: ["Super Admin", "Admin"],
