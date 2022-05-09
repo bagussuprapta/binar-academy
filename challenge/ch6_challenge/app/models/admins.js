@@ -13,7 +13,10 @@ module.exports = (sequelize, DataTypes) => {
   }
   Admins.init(
     {
-      username: DataTypes.STRING,
+      username: {
+        type: DataTypes.STRING,
+        primaryKey: true,
+      },
       password: DataTypes.STRING,
       type: DataTypes.ENUM({
         values: ["Super Admin", "Admin"],

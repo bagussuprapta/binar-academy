@@ -33,7 +33,7 @@ module.exports = {
         res.status(403).json({ message: "Only Super Admin can create Admin" });
         throw err;
       }
-      if (await Admins.findOne({ where: { username: req.body.username } })){
+      if (await Admins.findOne({ where: { username: req.body.username } })) {
         res.status(409).json({
           status: "Conflict",
           message: "Choose another username",
@@ -89,6 +89,13 @@ module.exports = {
     }
   },
 
+  async whoAmI(req, res) {
+    res.status(200).json({
+      status: "Success",
+      user: `${req.user?.username}`,
+    });
+  },
+
   async authorize(req, res, next) {
     try {
       const token = req.headers.authorization.split("Bearer ")[1];
@@ -96,7 +103,7 @@ module.exports = {
         token,
         process.env.ACCESS_TOKEN_ADMIN_SECRET
       );
-      req.user = await Admins.findByPk(tokenPayload.id);
+      req.user = await Admins.findByPk(tokenPayload.username);
       next();
     } catch (err) {
       res.status(400).json({ err });

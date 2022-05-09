@@ -56,7 +56,7 @@ module.exports = {
     try {
       const token = req.headers.authorization.split("Bearer ")[1];
       const tokenPayload = jwt.verify(token, process.env.ACCESS_TOKEN_USER_SECRET);
-      req.user = await Users.findByPk(tokenPayload.id);
+      req.user = await Users.findByPk(tokenPayload.username);
       next();
     } catch (err) {
       res.status(400).json({ err });

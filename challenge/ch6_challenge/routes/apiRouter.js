@@ -26,6 +26,11 @@ router.post("/v1/users/create", controllers.api.v1.userController.create);
 router.post("/v1/users/login", controllers.api.v1.userController.login);
 
 router.post(
+  "/v1/admins/whoami",
+  controllers.api.v1.adminController.authorize,
+  controllers.api.v1.adminController.whoAmI
+);
+router.post(
   "/v1/admins/create-admin",
   controllers.api.v1.adminController.createAdmin
 );
