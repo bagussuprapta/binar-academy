@@ -98,6 +98,13 @@ module.exports = {
 
   async authorize(req, res, next) {
     try {
+      if (req.headers.authorization == null) {
+        res.status(401).json({
+          status: "Unauthorized",
+          message: "Token needed",
+        });
+        return;
+      }
       const token = req.headers.authorization.split("Bearer ")[1];
       const tokenPayload = jwt.verify(
         token,
