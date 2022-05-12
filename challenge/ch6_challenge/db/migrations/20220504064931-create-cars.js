@@ -2,13 +2,9 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable("Cars", {
-      id: {
-        type: Sequelize.STRING,
-        allowNull: false,
-        primaryKey: true,
-      },
       plate: {
         type: Sequelize.STRING,
+        primaryKey: true,
         allowNull: false,
       },
       manufacture: {

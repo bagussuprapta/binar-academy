@@ -1,7 +1,5 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
+"use strict";
+const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class Cars extends Model {
     /**
@@ -13,26 +11,32 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
     }
   }
-  Cars.init({
-    plate: DataTypes.STRING,
-    manufacture: DataTypes.STRING,
-    model: DataTypes.STRING,
-    image: DataTypes.STRING,
-    rentPerDay: DataTypes.INTEGER,
-    capacity: DataTypes.INTEGER,
-    description: DataTypes.TEXT,
-    transmision: DataTypes.STRING,
-    available: DataTypes.BOOLEAN,
-    type: DataTypes.STRING,
-    year: DataTypes.STRING,
-    options: DataTypes.STRING,
-    specs: DataTypes.STRING,
-    createdBy: DataTypes.INTEGER,
-    deletedBy: DataTypes.INTEGER,
-    lastUpdatedBy: DataTypes.INTEGER
-  }, {
-    sequelize,
-    modelName: 'Cars',
-  });
+  Cars.init(
+    {
+      plate: {
+        type: DataTypes.STRING,
+        primaryKey: true,
+      },
+      manufacture: DataTypes.STRING,
+      model: DataTypes.STRING,
+      image: DataTypes.STRING,
+      rentPerDay: DataTypes.INTEGER,
+      capacity: DataTypes.INTEGER,
+      description: DataTypes.TEXT,
+      transmision: DataTypes.STRING,
+      available: DataTypes.BOOLEAN,
+      type: DataTypes.STRING,
+      year: DataTypes.STRING,
+      options: DataTypes.STRING,
+      specs: DataTypes.STRING,
+      createdBy: DataTypes.INTEGER,
+      deletedBy: DataTypes.INTEGER,
+      lastUpdatedBy: DataTypes.INTEGER,
+    },
+    {
+      sequelize,
+      modelName: "Cars",
+    }
+  );
   return Cars;
 };
