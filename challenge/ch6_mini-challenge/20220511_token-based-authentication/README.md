@@ -1,3 +1,8 @@
+# Test Api
+![register](public/image/Screenshot%202022-05-12%20111030.png)
+![login and get token](public/image/Screenshot%202022-05-12%20111054.png)
+![whoami](public/image/Screenshot%202022-05-12%20111132.png)
+
 # Binar: Authentication & Bcrypt
 
 Di dalam repository ini terdapat implementasi authentication dan penggunaan `bcryptjs` di dalamnya.
