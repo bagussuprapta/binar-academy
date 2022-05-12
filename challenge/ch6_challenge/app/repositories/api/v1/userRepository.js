@@ -7,5 +7,14 @@ module.exports = {
 
   async save(saveArgs){
     return await Users.create(saveArgs);
-  }
+  },
+
+  // async getColumnName() {
+  //   return Admins.rawAttributes;
+  // },
+
+
+  // async update(updateArgs, username) {
+  //   return Admins.update(updateArgs, { where: { username: username } });
+  // },
 }

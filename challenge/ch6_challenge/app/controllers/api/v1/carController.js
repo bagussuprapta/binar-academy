@@ -18,7 +18,7 @@ module.exports = {
   async postCreate(req, res) {
     try {
       const car = await carService.api.v1.carService.create(
-        req.admin,
+        req.user,
         req.body
       );
       res.status(201).json({ message: `${car.plate} created` });
@@ -30,7 +30,7 @@ module.exports = {
   async postUpdate(req, res) {
     try {
       const car = await carService.api.v1.carService.update(
-        req.admin,
+        req.user,
         req.body,
         req.params.plate
       );
@@ -47,7 +47,7 @@ module.exports = {
   async postDelete(req, res) {
     try {
       const car = await carService.api.v1.carService.delete(
-        req.admin,
+        req.user,
         req.params.plate
       );
       res.status(200).json({

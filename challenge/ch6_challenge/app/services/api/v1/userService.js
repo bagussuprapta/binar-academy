@@ -24,11 +24,11 @@ function checkPassword(password, encryptedPassword) {
 }
 
 function createToken(payload) {
-  return jwt.sign(payload, process.env.ACCESS_TOKEN_USER_SECRET);
+  return jwt.sign(payload, process.env.ACCESS_TOKEN_SECRET);
 }
 
 module.exports = {
-  async register(reqBody) {
+  async register(user, reqBody) {
     try {
       if (!reqBody.username)
         throw { status: 422, message: "username field cannot empty" };
@@ -36,6 +36,23 @@ module.exports = {
         throw { status: 422, message: "fullname field cannot empty" };
       if (!reqBody.password)
         throw { status: 422, message: "password field cannot empty" };
+      if (!reqBody.role)
+        throw { status: 422, message: "role field cannot empty" };
+      if (
+        !(
+          reqBody.role === "superadmin" ||
+          reqBody.role === "member" ||
+          reqBody.role === "admin"
+        )
+      )
+        throw {
+          status: 422,
+          message: "set role to member, admin or superadmin",
+        };
+      if (reqBody.role === "admin") {
+        if (!(user || user?.role === "member" || user?.role === "admin"))
+          throw { status: 401, message: "login as superadmin needed" };
+      }
       if (
         await userRepository.api.v1.userRepository.findByUsername(
           reqBody.username
@@ -63,9 +80,18 @@ module.exports = {
         throw { status: 401, message: "password or password wrong" };
       return createToken({
         username: user.username,
+        fullname: user.fullname,
       });
     } catch (err) {
       throw err;
     }
+  },
+
+  async update(username, reqBody) {
+    const admin = await this.findByUsername(username);
+    return adminRepository.api.v1.adminRepository.update(
+      reqBody,
+      admin.username
+    );
   },
 };

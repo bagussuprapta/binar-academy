@@ -1,9 +1,14 @@
 const authService = require("../../../services");
 
 module.exports = {
-  async authorizeAdmin(req, res, next) {
+  async authorize(req, res, next) {
     try {
-      req.admin = await authService.api.v1.authService.authorizeAdmin(
+      console.log(req.headers.authorization);
+      if (req.headers.authorization === undefined) {
+        next();
+        return;
+      }
+      req.user = await authService.api.v1.authService.authorize(
         req.headers.authorization
       );
       next();
