@@ -8,20 +8,25 @@ module.exports = {
         type: Sequelize.STRING,
       },
       fullname: {
-        allowNull: false,
         type: Sequelize.STRING,
+        allowNull: false,
       },
       password: {
-        allowNull: false,
         type: Sequelize.STRING,
+        allowNull: false,
+      },
+      role: {
+        type: Sequelize.ENUM,
+        allowNull: false,
+        values: ["member", "admin", "superadmin"],
       },
       createdAt: {
-        allowNull: false,
         type: Sequelize.DATE,
+        allowNull: false,
       },
       updatedAt: {
-        allowNull: false,
         type: Sequelize.DATE,
+        allowNull: false,
       },
     });
   },
