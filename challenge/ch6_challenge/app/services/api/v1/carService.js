@@ -11,7 +11,7 @@ module.exports = {
 
   async create(user, reqBody) {
     try {
-      if (!(user?.role !== "superadmin" || user?.role !== "admin"))
+      if (user === undefined || user?.role !== "superadmin" || user?.role === "admin")
         throw { status: 401, message: "please login as admin or superadmin" };
       if (await carRepository.api.v1.carRepository.findByPlate(reqBody.plate))
         throw { status: 409, message: `${reqBody.plate} already exsist` };
@@ -23,7 +23,7 @@ module.exports = {
 
   async update(user, reqBody, plate) {
     try {
-      if (!(user?.role !== "superadmin" || user?.role !== "admin"))
+      if (user === undefined || user?.role !== "superadmin" || user?.role === "admin")
         throw { status: 401, message: "please login as admin or superadmin" };
       if (!(await carRepository.api.v1.carRepository.findByPlate(plate)))
         throw { status: 404, message: "please input correct plate" };
@@ -36,7 +36,7 @@ module.exports = {
 
   async delete(user, plate) {
     try {
-      if (!(user?.role !== "superadmin" || user?.role !== "admin"))
+      if (user === undefined || user?.role !== "superadmin" || user?.role === "admin")
         throw { status: 401, message: "please login as admin or superadmin" };
       if (!(await carRepository.api.v1.carRepository.findByPlate(plate)))
         throw { status: 404, message: "please input correct plate" };
