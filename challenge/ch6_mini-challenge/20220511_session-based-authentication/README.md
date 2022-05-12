@@ -1,3 +1,7 @@
+# Test the API
+![register on API](public/image/Screenshot%202022-05-12%20105739.png)
+![login](public/image/Screenshot%202022-05-12%20105807.png)
+
 # Binar: Session Based Authentication
 
 Di dalam repository ini terdapat implementasi session based authentication
