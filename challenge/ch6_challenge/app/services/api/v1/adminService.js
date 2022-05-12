@@ -74,7 +74,7 @@ module.exports = {
       )
         throw { status: 409, message: "choose another username" };
       reqBody.password = await encryptPassword(reqBody.password);
-      return adminRepository.api.v1.adminRepository.register(reqBody);
+      return adminRepository.api.v1.adminRepository.save(reqBody);
     } catch (err) {
       throw err;
     }

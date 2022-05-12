@@ -21,7 +21,7 @@ module.exports = {
         req.admin,
         req.body
       );
-      res.status(201).json({ id: car.id });
+      res.status(201).json({ message: `${car.plate} created` });
     } catch (err) {
       res.status(err.status || 400).json({ message: err.message });
     }

@@ -6,7 +6,7 @@ module.exports = {
       const admin = await adminService.api.v1.adminService.registerSuperAdmin(
         req.body
       );
-      res.status(200).json({
+      res.status(202).json({
         username: admin.username,
         role: admin.role,
       });

@@ -9,11 +9,13 @@ module.exports = {
     }
   },
 
-  create(admin, reqBody) {
+  async create(admin, reqBody) {
     try {
       if (!(admin?.role !== "superadmin" || admin?.role !== "admin"))
         throw { status: 401, message: "please login as admin or superadmin" };
-      return carRepository.api.v1.carRepository.save(reqBody);
+      if (await carRepository.api.v1.carRepository.findByPlate(reqBody.plate))
+        throw { status: 409, message: `${reqBody.plate} already exsist` };
+      return await carRepository.api.v1.carRepository.save(reqBody);
     } catch (err) {
       throw err;
     }
@@ -39,7 +41,6 @@ module.exports = {
       if (!(await carRepository.api.v1.carRepository.findByPlate(plate)))
         throw { status: 404, message: "please input correct plate" };
       const car = await carRepository.api.v1.carRepository.findByPlate(plate);
-      console.log(car);
       await carRepository.api.v1.carRepository.delete(plate);
       return car;
     } catch (err) {
