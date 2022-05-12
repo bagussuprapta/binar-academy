@@ -29,9 +29,9 @@ module.exports = (sequelize, DataTypes) => {
       year: DataTypes.STRING,
       options: DataTypes.STRING,
       specs: DataTypes.STRING,
-      createdBy: DataTypes.INTEGER,
-      deletedBy: DataTypes.INTEGER,
-      lastUpdatedBy: DataTypes.INTEGER,
+      createdBy: DataTypes.STRING,
+      deletedBy: DataTypes.STRING,
+      lastUpdatedBy: DataTypes.STRING,
     },
     {
       sequelize,
