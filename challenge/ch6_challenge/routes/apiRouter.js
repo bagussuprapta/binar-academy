@@ -3,42 +3,50 @@ const controllers = require("../app/controllers");
 const express = require("express");
 const router = express.Router();
 
-// Car api
-router.get("/v1/cars", controllers.api.v1.carController.list);
+// admin router
+router.post(
+  "/v1/admins/register/superadmin",
+  controllers.api.v1.adminController.postRegisterSuperAdmin
+);
+router.post("/v1/admins/login", controllers.api.v1.adminController.postLogin);
+router.post(
+  "/v1/admins/register/admin",
+  controllers.api.v1.authController.authorizeAdmin,
+  controllers.api.v1.adminController.postRegisterAdmin
+);
+router.post(
+  "/v1/admins/update/:username",
+  controllers.api.v1.adminController.postUpdate
+);
+router.get(
+  "/v1/admins/current-admin",
+  controllers.api.v1.authController.authorizeAdmin,
+  controllers.api.v1.adminController.currentAdmin
+);
+
+// user route
+router.post(
+  "/v1/users/register",
+  controllers.api.v1.userController.postRegister
+);
+router.post("/v1/users/login", controllers.api.v1.userController.postLogin);
+
+// car route
+router.get("/v1/cars", controllers.api.v1.carController.getAllCar);
 router.post(
   "/v1/cars/create",
-  controllers.api.v1.adminController.authorize,
-  controllers.api.v1.carController.create
+  controllers.api.v1.authController.authorizeAdmin,
+  controllers.api.v1.carController.postCreate
 );
-router.post(
-  "/v1/cars/update",
-  controllers.api.v1.adminController.authorize,
-  controllers.api.v1.carController.update
+router.put(
+  "/v1/cars/update/:plate",
+  controllers.api.v1.authController.authorizeAdmin,
+  controllers.api.v1.carController.postUpdate
 );
-router.post(
+router.delete(
   "/v1/cars/delete/:plate",
-  controllers.api.v1.adminController.authorize,
-  controllers.api.v1.carController.delete
+  controllers.api.v1.authController.authorizeAdmin,
+  controllers.api.v1.carController.postDelete
 );
-
-// Admin api
-router.post("/v1/users/create", controllers.api.v1.userController.create);
-router.post("/v1/users/login", controllers.api.v1.userController.login);
-
-router.post(
-  "/v1/admins/whoami",
-  controllers.api.v1.adminController.authorize,
-  controllers.api.v1.adminController.whoAmI
-);
-router.post(
-  "/v1/admins/create-admin",
-  controllers.api.v1.adminController.createAdmin
-);
-router.post(
-  "/v1/admins/create",
-  controllers.api.v1.adminController.authorize,
-  controllers.api.v1.adminController.create
-);
-router.post("/v1/admins/login", controllers.api.v1.adminController.login);
 
 module.exports = router;

@@ -1,59 +1,62 @@
-const { Cars } = require("../../../models");
+const carService = require("../../../services");
 
 module.exports = {
-  create(req, res) {
-    if (req.user?.type !== "Super Admin" && req.user?.type !== "Admin") {
-      res.status(403).json({
-        status: "Forbidden",
-        message: "Only Super Admin and Admin can update car",
+  async getAllCar(req, res) {
+    try {
+      const cars = await carService.api.v1.carService.getAllCar();
+      res.status(200).json({
+        cars,
       });
-      return;
+    } catch (err) {
+      res.status(err.status || 400).json({
+        err: err.status,
+        message: err.message,
+      });
     }
-    Cars.create(req.body)
-      .then((car) => {
-        res.status(201).json({
-          status: "Created",
-          data: `${car.plate} Saved`,
-        });
-      })
-      .catch((err) => {
-        res.status(422).json({
-          status: "Unprocessable Entity",
-          message: err.message,
-        });
-      });
   },
 
-  async list(req, res) {
-    const car = await Cars.findAll();
-    res.status(201).json({
-      car,
-    });
+  async postCreate(req, res) {
+    try {
+      const car = await carService.api.v1.carService.create(
+        req.admin,
+        req.body
+      );
+      res.status(201).json({ id: car.id });
+    } catch (err) {
+      res.status(err.status || 400).json({ message: err.message });
+    }
   },
 
-  async update(req, res) {
-    if (req.user?.type !== "Super Admin" && req.user?.type !== "Admin") {
-      res.status(403).json({
-        status: "Forbidden",
-        message: "Only Super Admin and Admin can update car",
+  async postUpdate(req, res) {
+    try {
+      const car = await carService.api.v1.carService.update(
+        req.admin,
+        req.body,
+        req.params.plate
+      );
+      res.status(200).json({
+        message: `${car.plate} updated`,
       });
-      return;
+    } catch (err) {
+      res.status(err.status || 400).json({
+        message: err.message,
+      });
     }
-    const car = await Cars.findOne({ where: { plate: req.body.plate } });
-    Cars.update(req.body, { where: { plate: car.plate } });
-    res.status(202).json({ status: "Accepted" });
   },
 
-  async delete(req, res) {
-    if (req.user?.type !== "Super Admin" && req.user?.type !== "Admin") {
-      res.status(403).json({
-        status: "Forbidden",
-        message: "Only Super Admin and Admin can update car",
+  async postDelete(req, res) {
+    try {
+      const car = await carService.api.v1.carService.delete(
+        req.admin,
+        req.params.plate
+      );
+      res.status(200).json({
+        message: `${car.plate} deleted by ${car.deletedBy}`,
       });
-      return;
+    } catch (err) {
+      res.status(err.status || 400).json({
+        message: err.message,
+      });
     }
-
-    await Cars.destroy({ where: { plate: req.params.plate } });
-    res.status(200).json({ status: "OK" });
   },
 };
