@@ -26,9 +26,9 @@ module.exports = {
 
   async currentUser(req, res) {
     res.status(200).json({
-      username: req.user.username,
-      fullname: req.user.fullname,
-      role: req.user.role,
+      username: req.user?.username,
+      fullname: req.user?.fullname,
+      role: req.user?.role,
     });
   },
 
