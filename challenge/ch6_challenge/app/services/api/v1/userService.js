@@ -77,7 +77,7 @@ module.exports = {
       );
       if (!user) throw { status: 401, message: "username or password wrong" };
       if (!checkPassword(reqBody.password, user.password))
-        throw { status: 401, message: "password or password wrong" };
+        throw { status: 401, message: "username or password wrong" };
       return createToken({
         username: user.username,
         fullname: user.fullname,
