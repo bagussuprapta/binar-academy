@@ -1,7 +1,14 @@
 const controllers = require("../app/controllers");
-
+const swaggerUi = require("swagger-ui-express");
 const express = require("express");
+
 const router = express.Router();
+
+const swaggerDocument = require("../config/openapi.json");
+
+// api documentation
+router.use("/v1/docs", swaggerUi.serve)
+router.get("/v1/docs", swaggerUi.setup(swaggerDocument));
 
 // user router
 router.post(
