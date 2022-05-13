@@ -51,7 +51,7 @@ module.exports = {
         };
       if (reqBody.role === "admin") {
         if (!(user || user?.role === "member" || user?.role === "admin"))
-          throw { status: 401, message: "login as superadmin needed" };
+          throw { status: 401, message: "login as superadmin needed to this action" };
       }
       if (
         await userRepository.api.v1.userRepository.findByUsername(

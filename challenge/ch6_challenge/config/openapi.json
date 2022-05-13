@@ -55,7 +55,7 @@
                 }
               },
               "examples": {
-                "gusde": {
+                "register as superadmin": {
                   "description": "Register user with username gusde and role as superadmin",
                   "value": {
                     "username": "gusde",
@@ -64,7 +64,7 @@
                     "role": "superadmin"
                   }
                 },
-                "anom": {
+                "register as admin": {
                   "description": "Register user with username anom and role as admin",
                   "value": {
                     "username": "anom",
@@ -73,11 +73,11 @@
                     "role": "admin"
                   }
                 },
-                "budi": {
-                  "description": "Register user with username budi and role as member",
+                "register as member": {
+                  "description": "Register user with username jhon and role as member",
                   "value": {
-                    "username": "budi",
-                    "fullname": "Budi Siswanto",
+                    "username": "jhon",
+                    "fullname": "Jhon Doe",
                     "password": "123",
                     "role": "member"
                   }
@@ -106,24 +106,24 @@
                   }
                 },
                 "examples": {
-                  "gusde": {
+                  "register as superadmin": {
                     "description": "Success register user with username gusde and role as superadmin",
                     "value": {
                       "username": "gusde",
                       "role": "superadmin"
                     }
                   },
-                  "anom": {
-                    "description": "Success register user with username anom and role as admin",
+                  "register as admin": {
+                    "description": "Success register user with username anom and role as admin if user have been login as superadmin role",
                     "value": {
                       "username": "anom",
                       "role": "admin"
                     }
                   },
-                  "andi": {
-                    "description": "Success register user with username andisurya and role as member",
+                  "register as member": {
+                    "description": "Success register user with username jhon and role as member",
                     "value": {
-                      "username": "andisurya",
+                      "username": "jhon",
                       "role": "member"
                     }
                   }
@@ -144,10 +144,22 @@
                   }
                 },
                 "examples": {
-                  "without superadmin role": {
-                    "description": "Without login as superadmin when register an admin",
+                  "without login": {
+                    "description": "Unauthorized user when register an user with role as admin",
                     "value": {
-                      "message": "login as superadmin needed"
+                      "message": "login as superadmin needed to this action"
+                    }
+                  },
+                  "login as member": {
+                    "description": "Unauthorized user when register an user with role as admin",
+                    "value": {
+                      "message": "login as superadmin needed to this action"
+                    }
+                  },
+                  "login as admin": {
+                    "description": "Unauthorized user when register an user with role as admin",
+                    "value": {
+                      "message": "login as superadmin needed to this action"
                     }
                   }
                 }
@@ -167,8 +179,8 @@
                   }
                 },
                 "examples": {
-                  "username exsist": {
-                    "description": "Username already exsist in database",
+                  "username conflict": {
+                    "description": "Username conflict because have already use",
                     "value": {
                       "message": "choose another username"
                     }
@@ -190,32 +202,32 @@
                   }
                 },
                 "examples": {
-                  "username field undefined": {
-                    "description": "Username field does not initialize",
+                  "username key undefined": {
+                    "description": "username key does not initialize",
                     "value": {
-                      "message": "username field cannot empty"
+                      "message": "username key cannot empty"
                     }
                   },
-                  "fullname field undefined": {
-                    "description": "Fullname field does not initialize",
+                  "fullname key undefined": {
+                    "description": "fullname key does not initialize",
                     "value": {
-                      "message": "fullname field cannot empty"
+                      "message": "fullname key cannot empty"
                     }
                   },
-                  "password field undefined": {
-                    "description": "Password field does not initialize",
+                  "password key undefined": {
+                    "description": "password key does not initialize",
                     "value": {
-                      "message": "password field cannot empty"
+                      "message": "password key cannot empty"
                     }
                   },
-                  "role field undefined": {
-                    "description": "Role field does not initialize",
+                  "role key undefined": {
+                    "description": "role key does not initialize",
                     "value": {
-                      "message": "role field cannot empty"
+                      "message": "role key cannot empty"
                     }
                   },
-                  "role field wrong": {
-                    "description": "Role field wrong value",
+                  "role value wrong": {
+                    "description": "role value wrong",
                     "value": {
                       "message": "set role to member, admin or superadmin"
                     }
@@ -246,23 +258,30 @@
                   },
                   "password": {
                     "type": "string",
-                    "minLength": 3,
-                    "required": ["true"]
+                    "required": ["true"],
+                    "minLength": 3
                   }
                 }
               },
               "examples": {
-                "gusde": {
+                "login as gusde": {
                   "description": "Login with username gusde",
                   "value": {
                     "username": "gusde",
                     "password": "123"
                   }
                 },
-                "anom": {
+                "login as anom": {
                   "description": "Login with username anom",
                   "value": {
                     "username": "anom",
+                    "password": "123"
+                  }
+                },
+                "login as jhon": {
+                  "description": "Login with username jhon",
+                  "value": {
+                    "username": "jhon",
                     "password": "123"
                   }
                 }
@@ -284,39 +303,9 @@
                   }
                 },
                 "examples": {
-                  "token": {
-                    "description": "Token JWT",
+                  "success login": {
                     "value": {
                       "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Imd1c2RlIiwiZnVsbG5hbWUiOiJCYWd1cyBTdXByYXB0YSIsImlhdCI6MTY1MjQ1Mzg4M30.OPmGtLgbz6i4S78ly-u6Rz0URTf3ZrB2gpfjbN-gq2k"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Unprocessable login user",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "message": {
-                      "type": "string"
-                    }
-                  }
-                },
-                "examples": {
-                  "username field undefined": {
-                    "description": "Username field does not initialize",
-                    "value": {
-                      "message": "username field cannot empty"
-                    }
-                  },
-                  "password field undefined": {
-                    "description": "Password field does not initialize",
-                    "value": {
-                      "message": "password field cannot empty"
                     }
                   }
                 }
@@ -336,10 +325,38 @@
                   }
                 },
                 "examples": {
-                  "username or password wrong": {
-                    "description": "Username or password wrong",
+                  "unauthorized": {
                     "value": {
-                      "message": "username field cannot empty"
+                      "message": "username or password wrong"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable entity login user",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "examples": {
+                  "username key undefined": {
+                    "value": {
+                      "description": "username key does not initialize",
+                      "message": "username key cannot empty"
+                    }
+                  },
+                  "password key undefined": {
+                    "value": {
+                      "description": "username key does not initialize",
+                      "message": "password key cannot empty"
                     }
                   }
                 }
@@ -348,6 +365,9 @@
           }
         }
       }
+    },
+    "/cars/create": {
+      
     }
   }
 }
