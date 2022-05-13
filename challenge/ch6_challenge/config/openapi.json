@@ -1,0 +1,353 @@
+{
+  "openapi": "3.0.2",
+  "info": {
+    "title": "Binar Car Rental RESTful API",
+    "description": "OpenAPI for Binar Car Rental RESTful API",
+    "version": "1.0.0",
+    "contact": {
+      "name": "Gusde",
+      "email": "gusde@slickeel.com",
+      "url": "https://www.slickeel.com"
+    },
+    "license": {
+      "name": "APACHE 2.0",
+      "url": "https://www.apache.org/licenses/LICENSE-2.0"
+    }
+  },
+  "servers": [
+    {
+      "description": "Binar Car Rental API Server",
+      "url": "http://localhost:8080/api/v1"
+    }
+  ],
+  "paths": {
+    "/users/register": {
+      "post": {
+        "tags": ["User"],
+        "summary": "Register user",
+        "description": "Register user with different role, like member, admin, and superadmin",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "username": {
+                    "type": "string",
+                    "required": ["true"],
+                    "minLength": 2
+                  },
+                  "fullname": {
+                    "type": "string",
+                    "required": ["true"],
+                    "minLength": 2
+                  },
+                  "password": {
+                    "type": "string",
+                    "minLength": 3,
+                    "required": ["true"]
+                  },
+                  "role": {
+                    "type": "string",
+                    "required": ["true"]
+                  }
+                }
+              },
+              "examples": {
+                "gusde": {
+                  "description": "Register user with username gusde and role as superadmin",
+                  "value": {
+                    "username": "gusde",
+                    "fullname": "Bagus Suprapta",
+                    "password": "123",
+                    "role": "superadmin"
+                  }
+                },
+                "anom": {
+                  "description": "Register user with username anom and role as admin",
+                  "value": {
+                    "username": "anom",
+                    "fullname": "Anom Suryanang",
+                    "password": "123",
+                    "role": "admin"
+                  }
+                },
+                "budi": {
+                  "description": "Register user with username budi and role as member",
+                  "value": {
+                    "username": "budi",
+                    "fullname": "Budi Siswanto",
+                    "password": "123",
+                    "role": "member"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success register user",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "username": {
+                      "type": "string",
+                      "required": ["true"],
+                      "minLength": 2
+                    },
+                    "role": {
+                      "type": "string",
+                      "required": ["true"]
+                    }
+                  }
+                },
+                "examples": {
+                  "gusde": {
+                    "description": "Success register user with username gusde and role as superadmin",
+                    "value": {
+                      "username": "gusde",
+                      "role": "superadmin"
+                    }
+                  },
+                  "anom": {
+                    "description": "Success register user with username anom and role as admin",
+                    "value": {
+                      "username": "anom",
+                      "role": "admin"
+                    }
+                  },
+                  "andi": {
+                    "description": "Success register user with username andisurya and role as member",
+                    "value": {
+                      "username": "andisurya",
+                      "role": "member"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized register user",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "examples": {
+                  "without superadmin role": {
+                    "description": "Without login as superadmin when register an admin",
+                    "value": {
+                      "message": "login as superadmin needed"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict register user",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "examples": {
+                  "username exsist": {
+                    "description": "Username already exsist in database",
+                    "value": {
+                      "message": "choose another username"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable entity register user",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "examples": {
+                  "username field undefined": {
+                    "description": "Username field does not initialize",
+                    "value": {
+                      "message": "username field cannot empty"
+                    }
+                  },
+                  "fullname field undefined": {
+                    "description": "Fullname field does not initialize",
+                    "value": {
+                      "message": "fullname field cannot empty"
+                    }
+                  },
+                  "password field undefined": {
+                    "description": "Password field does not initialize",
+                    "value": {
+                      "message": "password field cannot empty"
+                    }
+                  },
+                  "role field undefined": {
+                    "description": "Role field does not initialize",
+                    "value": {
+                      "message": "role field cannot empty"
+                    }
+                  },
+                  "role field wrong": {
+                    "description": "Role field wrong value",
+                    "value": {
+                      "message": "set role to member, admin or superadmin"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/login": {
+      "post": {
+        "tags": ["User"],
+        "summary": "Login user",
+        "description": "Login user with different role, like member, admin, and superadmin",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "username": {
+                    "type": "string",
+                    "required": ["true"],
+                    "minLength": 2
+                  },
+                  "password": {
+                    "type": "string",
+                    "minLength": 3,
+                    "required": ["true"]
+                  }
+                }
+              },
+              "examples": {
+                "gusde": {
+                  "description": "Login with username gusde",
+                  "value": {
+                    "username": "gusde",
+                    "password": "123"
+                  }
+                },
+                "anom": {
+                  "description": "Login with username anom",
+                  "value": {
+                    "username": "anom",
+                    "password": "123"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success login user",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "token": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "examples": {
+                  "token": {
+                    "description": "Token JWT",
+                    "value": {
+                      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Imd1c2RlIiwiZnVsbG5hbWUiOiJCYWd1cyBTdXByYXB0YSIsImlhdCI6MTY1MjQ1Mzg4M30.OPmGtLgbz6i4S78ly-u6Rz0URTf3ZrB2gpfjbN-gq2k"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable login user",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "examples": {
+                  "username field undefined": {
+                    "description": "Username field does not initialize",
+                    "value": {
+                      "message": "username field cannot empty"
+                    }
+                  },
+                  "password field undefined": {
+                    "description": "Password field does not initialize",
+                    "value": {
+                      "message": "password field cannot empty"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401":{
+            "description": "Unauthorized login user",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "examples": {
+                  "username or password wrong": {
+                    "description": "Username or password wrong",
+                    "value": {
+                      "message": "username field cannot empty"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
