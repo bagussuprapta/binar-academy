@@ -60,7 +60,6 @@ module.exports = {
       },
       deletedBy: {
         type: Sequelize.STRING,
-        allowNull: false,
       },
       lastUpdatedBy: {
         type: Sequelize.STRING,
