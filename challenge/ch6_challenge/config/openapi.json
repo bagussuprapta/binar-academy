@@ -23,7 +23,7 @@
   "paths": {
     "/users/register": {
       "post": {
-        "tags": ["user"],
+        "tags": ["users"],
         "security": [
           {
             "userAuth": []
@@ -248,7 +248,7 @@
     },
     "/users/login": {
       "post": {
-        "tags": ["user"],
+        "tags": ["users"],
         "security": [
           {
             "userAuth": []
@@ -380,7 +380,9 @@
     },
     "/users/current": {
       "get": {
-        "tags": ["user"],
+        "tags": ["users"],
+        "summary": "Current user",
+        "description": "Current user",
         "security": [
           {
             "userAuth": []
@@ -388,12 +390,7 @@
         ],
         "parameters": [
           {
-            "name": "token",
-            "in": "header",
-            "description": "User header token",
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/authUser"
           }
         ],
         "responses": {
@@ -430,6 +427,360 @@
           }
         }
       }
+    },
+    "/cars/create": {
+      "post": {
+        "tags": ["cars"],
+        "summary": "Get cars",
+        "description": "Get cars",
+        "security": [
+          {
+            "userAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/authUser"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "plate": {
+                    "type": "string"
+                  },
+                  "manufacture": {
+                    "type": "string"
+                  },
+                  "model": {
+                    "type": "string"
+                  },
+                  "image": {
+                    "type": "string"
+                  },
+                  "rentPerDay": {
+                    "type": "integer"
+                  },
+                  "capacity": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "transmision": {
+                    "type": "string"
+                  },
+                  "available": {
+                    "type": "boolean"
+                  },
+                  "type": {
+                    "type": "string"
+                  },
+                  "year": {
+                    "type": "string"
+                  },
+                  "options": {
+                    "type": "string"
+                  },
+                  "specs": {
+                    "type": "string"
+                  }
+                }
+              },
+              "examples": {
+                "B1234BC": {
+                  "value": {
+                    "plate": "B1234BC",
+                    "manufacture": "Ford",
+                    "model": "F150",
+                    "image": "url",
+                    "rentPerDay": 200000,
+                    "capacity": 2,
+                    "description": "Brake assist. Leather-wrapped shift knob. Glove box lamp. Air conditioning w/in-cabin microfilter.",
+                    "transmision": "Automatic",
+                    "available": 1,
+                    "type": "Sedan",
+                    "year": "2018",
+                    "options": "Cruise Control, Tinted Glass, Tinted Glas, Tinted Glass",
+                    "specs": "Cruise Control, Tinted Glass, Tinted Glas, Tinted Glass"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success create car",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "examples": {
+                  "B1234BC": {
+                    "value": {
+                      "message": "B1234BC created"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/cars": {
+      "get": {
+        "tags": ["cars"],
+        "summary": "Get cars",
+        "description": "Get all cars",
+        "responses": {
+          "200": {
+            "description": "Success get all cars",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "plate": {
+                      "type": "string"
+                    },
+                    "manufacture": {
+                      "type": "string"
+                    },
+                    "model": {
+                      "type": "string"
+                    },
+                    "image": {
+                      "type": "string"
+                    },
+                    "rentPerDay": {
+                      "type": "integer"
+                    },
+                    "capacity": {
+                      "type": "string"
+                    },
+                    "description": {
+                      "type": "string"
+                    },
+                    "transmision": {
+                      "type": "string"
+                    },
+                    "available": {
+                      "type": "boolean"
+                    },
+                    "type": {
+                      "type": "string"
+                    },
+                    "year": {
+                      "type": "string"
+                    },
+                    "options": {
+                      "type": "string"
+                    },
+                    "specs": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "examples": {
+                  "B1234BC": {
+                    "value": {
+                      "plate": "B1234BC",
+                      "manufacture": "Ford",
+                      "model": "F150",
+                      "image": "url",
+                      "rentPerDay": 200000,
+                      "capacity": 2,
+                      "description": "Brake assist. Leather-wrapped shift knob. Glove box lamp. Air conditioning w/in-cabin microfilter.",
+                      "transmision": "Automatic",
+                      "available": 1,
+                      "type": "Sedan",
+                      "year": "2018",
+                      "options": "Cruise Control, Tinted Glass, Tinted Glas, Tinted Glass",
+                      "specs": "Cruise Control, Tinted Glass, Tinted Glas, Tinted Glass"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/cars/update/{plate}": {
+      "put": {
+        "security": [
+          {
+            "authUser": []
+          }
+        ],
+        "summary": "Update car",
+        "tags": ["cars"],
+        "parameters": [
+          {
+            "required": true,
+            "name": "plate",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "B1234BC": {
+                "value": "B1234BC"
+              }
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "manufacture": {
+                    "type": "string"
+                  },
+                  "model": {
+                    "type": "string"
+                  },
+                  "image": {
+                    "type": "string"
+                  },
+                  "rentPerDay": {
+                    "type": "integer"
+                  },
+                  "capacity": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "transmision": {
+                    "type": "string"
+                  },
+                  "available": {
+                    "type": "boolean"
+                  },
+                  "type": {
+                    "type": "string"
+                  },
+                  "year": {
+                    "type": "string"
+                  },
+                  "options": {
+                    "type": "string"
+                  },
+                  "specs": {
+                    "type": "string"
+                  }
+                }
+              },
+              "examples": {
+                "B1234BC": {
+                  "value": {
+                    "manufacture": "Ford",
+                    "model": "F150",
+                    "image": "url",
+                    "rentPerDay": 200000,
+                    "capacity": 2,
+                    "description": "Brake assist. Leather-wrapped shift knob. Glove box lamp. Air conditioning w/in-cabin microfilter.",
+                    "transmision": "Automatic",
+                    "available": 1,
+                    "type": "Sedan",
+                    "year": "2018",
+                    "options": "Cruise Control, Tinted Glass, Tinted Glas, Tinted Glass",
+                    "specs": "Cruise Control, Tinted Glass, Tinted Glas, Tinted Glass"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success update car",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "examples": {
+                  "B1234BC": {
+                    "value": {
+                      "message": "B1234BC updated"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/cars/delete/{plate}": {
+      "delete": {
+        "security": [
+          {
+            "userAuth": []
+          }
+        ],
+        "summary": "Delete car",
+        "tags": ["cars"],
+        "parameters": [
+          {
+            "required": true,
+            "name": "plate",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "B1234BC": {
+                "value": "B1234BC"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success delete car",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "examples": {
+                  "B1234BC": {
+                    "value": {
+                      "message": "B1234BC deleted"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -439,6 +790,15 @@
         "type": "http",
         "scheme": "bearer",
         "bearerFormat": "JWT"
+      }
+    },
+    "parameters": {
+      "authUser": {
+        "name": "token",
+        "in": "header",
+        "schema": {
+          "type": "string"
+        }
       }
     }
   }
