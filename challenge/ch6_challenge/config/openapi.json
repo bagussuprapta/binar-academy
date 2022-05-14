@@ -23,7 +23,12 @@
   "paths": {
     "/users/register": {
       "post": {
-        "tags": ["User"],
+        "tags": ["user"],
+        "security": [
+          {
+            "userAuth": []
+          }
+        ],
         "summary": "Register user",
         "description": "Register user with different role, like member, admin, and superadmin",
         "requestBody": {
@@ -36,49 +41,50 @@
                   "username": {
                     "type": "string",
                     "required": ["true"],
-                    "minLength": 2
+                    "minLength": 3
                   },
                   "fullname": {
                     "type": "string",
                     "required": ["true"],
-                    "minLength": 2
+                    "minLength": 3
                   },
                   "password": {
                     "type": "string",
-                    "minLength": 3,
+                    "minLength": 6,
                     "required": ["true"]
                   },
                   "role": {
                     "type": "string",
-                    "required": ["true"]
+                    "required": ["true"],
+                    "enum": ["superadmin", "admin", "member"]
                   }
                 }
               },
               "examples": {
-                "register as superadmin": {
+                "superadmin": {
                   "description": "Register user with username gusde and role as superadmin",
                   "value": {
                     "username": "gusde",
                     "fullname": "Bagus Suprapta",
-                    "password": "123",
+                    "password": "123456",
                     "role": "superadmin"
                   }
                 },
-                "register as admin": {
+                "admin": {
                   "description": "Register user with username anom and role as admin",
                   "value": {
                     "username": "anom",
                     "fullname": "Anom Suryanang",
-                    "password": "123",
+                    "password": "123456",
                     "role": "admin"
                   }
                 },
-                "register as member": {
+                "member": {
                   "description": "Register user with username jhon and role as member",
                   "value": {
                     "username": "jhon",
                     "fullname": "Jhon Doe",
-                    "password": "123",
+                    "password": "123456",
                     "role": "member"
                   }
                 }
@@ -97,30 +103,31 @@
                     "username": {
                       "type": "string",
                       "required": ["true"],
-                      "minLength": 2
+                      "minLength": 3
                     },
                     "role": {
                       "type": "string",
-                      "required": ["true"]
+                      "required": ["true"],
+                      "enum": ["superadmin", "admin", "member"]
                     }
                   }
                 },
                 "examples": {
-                  "register as superadmin": {
+                  "superadmin": {
                     "description": "Success register user with username gusde and role as superadmin",
                     "value": {
                       "username": "gusde",
                       "role": "superadmin"
                     }
                   },
-                  "register as admin": {
+                  "admin": {
                     "description": "Success register user with username anom and role as admin if user have been login as superadmin role",
                     "value": {
                       "username": "anom",
                       "role": "admin"
                     }
                   },
-                  "register as member": {
+                  "member": {
                     "description": "Success register user with username jhon and role as member",
                     "value": {
                       "username": "jhon",
@@ -226,7 +233,7 @@
                       "message": "role key cannot empty"
                     }
                   },
-                  "role value wrong": {
+                  "role have wrong value": {
                     "description": "role value wrong",
                     "value": {
                       "message": "set role to member, admin or superadmin"
@@ -241,7 +248,12 @@
     },
     "/users/login": {
       "post": {
-        "tags": ["User"],
+        "tags": ["user"],
+        "security": [
+          {
+            "userAuth": []
+          }
+        ],
         "summary": "Login user",
         "description": "Login user with different role, like member, admin, and superadmin",
         "requestBody": {
@@ -312,7 +324,7 @@
               }
             }
           },
-          "401":{
+          "401": {
             "description": "Unauthorized login user",
             "content": {
               "application/json": {
@@ -348,14 +360,14 @@
                 },
                 "examples": {
                   "username key undefined": {
+                    "description": "username key does not initialize",
                     "value": {
-                      "description": "username key does not initialize",
                       "message": "username key cannot empty"
                     }
                   },
                   "password key undefined": {
+                    "description": "password key does not initialize",
                     "value": {
-                      "description": "username key does not initialize",
                       "message": "password key cannot empty"
                     }
                   }
@@ -366,8 +378,68 @@
         }
       }
     },
-    "/cars/create": {
-      
+    "/users/current": {
+      "get": {
+        "tags": ["user"],
+        "security": [
+          {
+            "userAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "token",
+            "in": "header",
+            "description": "User header token",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success get current user",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "username": {
+                      "type": "string"
+                    },
+                    "fullname": {
+                      "type": "string"
+                    },
+                    "role": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "examples": {
+                  "success": {
+                    "description": "success get current user",
+                    "value": {
+                      "username": "gusde",
+                      "fullname": "Bagus Suprapta",
+                      "role": "superadmin"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "userAuth": {
+        "description": "Auth for user Binar Car Rental",
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
     }
   }
 }
