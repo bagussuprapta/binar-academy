@@ -61,7 +61,7 @@ module.exports = {
       deletedBy: {
         type: Sequelize.STRING,
       },
-      lastUpdatedBy: {
+      updatedBy: {
         type: Sequelize.STRING,
         allowNull: false,
       },

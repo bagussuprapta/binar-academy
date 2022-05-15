@@ -31,7 +31,7 @@ module.exports = (sequelize, DataTypes) => {
       specs: DataTypes.STRING,
       createdBy: DataTypes.STRING,
       deletedBy: DataTypes.STRING,
-      lastUpdatedBy: DataTypes.STRING,
+      updatedBy: DataTypes.STRING,
     },
     {
       sequelize,
