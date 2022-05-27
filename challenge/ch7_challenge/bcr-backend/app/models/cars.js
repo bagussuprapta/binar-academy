@@ -32,6 +32,7 @@ module.exports = (sequelize, DataTypes) => {
       createdBy: DataTypes.STRING,
       deletedBy: DataTypes.STRING,
       updatedBy: DataTypes.STRING,
+      availableAt: DataTypes.DATE,
     },
     {
       sequelize,

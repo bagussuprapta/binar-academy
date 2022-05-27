@@ -25,6 +25,7 @@ router.get(
 
 // car route
 router.get("/v1/cars", controllers.api.v1.carController.getAllCar);
+router.get("/v1/cars/available", controllers.api.v1.carController.getAvailableCar);
 router.post(
   "/v1/cars/create",
   controllers.api.v1.authController.authorize,

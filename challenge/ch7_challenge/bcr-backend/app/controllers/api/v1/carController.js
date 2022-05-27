@@ -15,6 +15,20 @@ module.exports = {
     }
   },
 
+  async getAvailableCar(req, res){
+    try {
+      const cars = await carService.api.v1.carService.getAvailableCar(req.body.availableAt)
+      res.status(200).json({
+        cars,
+      });
+    }catch(err){
+      res.status(err.status || 400).json({
+        err: err.status,
+        message: err.message,
+      });
+    }
+  },
+
   async postCreate(req, res) {
     try {
       const car = await carService.api.v1.carService.create(

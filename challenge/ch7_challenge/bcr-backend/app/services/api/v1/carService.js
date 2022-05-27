@@ -9,6 +9,16 @@ module.exports = {
     }
   },
 
+  async getAvailableCar(date){
+    try{
+      const cars = await carRepository.api.v1.carRepository.getAllCar();
+      console.log(cars);
+      return await carRepository.api.v1.carRepository.availableDate(date, cars);
+    }catch(err){
+      throw err;
+    }
+  },
+
   async create(user, reqBody) {
     try {
       if (
