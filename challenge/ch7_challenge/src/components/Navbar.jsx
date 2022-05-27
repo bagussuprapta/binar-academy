@@ -2,16 +2,17 @@ function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg navbar-light pt-4">
       <div className="container">
-        <a className="navbar-brand" href="#">
+        <a className="navbar-brand" href="/#">
           <img
             src="https://img.icons8.com/emoji/8x/trade-mark-emoji.png"
             width="30px"
+            alt="trade"
           />
         </a>
         <div className="collapse navbar-collapse">
           <ul className="navbar-nav">
             <li className="nav-item">
-              <a className="nav-link" href="#">
+              <a className="nav-link" href="/#">
                 Binar Car Rental
               </a>
             </li>
@@ -54,7 +55,7 @@ function Navbar() {
               </a>
             </li>
             <li className="nav-item">
-              <button className="btn btn-success btn-success-register p-0">
+              <button className="btn btn-primary btn-success-register p-0">
                 Register
               </button>
             </li>
