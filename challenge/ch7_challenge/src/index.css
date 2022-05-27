@@ -28,10 +28,6 @@ html {
   box-shadow: none;
 }
 
-.mt-5 {
-  margin-top: 100px !important;
-}
-
 h2, h5 {
   font-weight: bold;
 }
@@ -63,4 +59,8 @@ h2, h5 {
 
 .navbar-light, .introduction {
   background-color: #F1F3FF;
+}
+
+.start-rent {
+  width: 1168px;
 }
