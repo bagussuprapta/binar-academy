@@ -1,0 +1,231 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Binar Car Rental RESTful API",
+    "version": "1.0.0",
+    "description": "OpenAPI for Binar Car Rental RESTful API",
+    "contact": {
+      "email": "gusde@slickeel.com",
+      "name": "Gusde",
+      "url": "https://www.slickeel.com"
+    }
+  },
+  "host": "127.0.0.1:8080",
+  "basePath": "/api/v1",
+  "schemes": ["http", "https"],
+  "paths": {
+    "/users/register": {
+      "post": {
+        "tags": ["user"],
+        "summary": "Register user",
+        "description": "Register user with different role, like member, admin, and superadmin",
+        "produces": ["application.json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "username": {
+                  "type": "string",
+                  "required": ["true"],
+                  "minLength": 2,
+                  "default": "gusde"
+                },
+                "fullname": {
+                  "type": "string",
+                  "required": ["true"],
+                  "minLength": 2,
+                  "default": "Bagus Suprapta"
+                },
+                "password": {
+                  "type": "string",
+                  "minLength": 3,
+                  "required": ["true"],
+                  "default": "123"
+                },
+                "role": {
+                  "type": "string",
+                  "required": ["true"],
+                  "enum": ["member", "admin", "superadmin"]
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success register user",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "username": {
+                  "type": "string",
+                  "minLength": 2,
+                  "default": "gusde"
+                },
+                "role": {
+                  "type": "string",
+                  "default": "superadmin"
+                }
+              }
+            },
+            "examples": {
+              "gusde": {
+                "description": "Success register user with username gusde and role as superadmin",
+                "value": {
+                  "username": "gusde",
+                  "role": "superadmin"
+                }
+              },
+              "anom": {
+                "description": "Success register user with username anom and role as admin",
+                "value": {
+                  "username": "anom",
+                  "role": "admin"
+                }
+              },
+              "andi": {
+                "description": "Success register user with username andisurya and role as member",
+                "value": {
+                  "username": "andisurya",
+                  "role": "member"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized register user",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "default": "login as superadmin needed"
+                }
+              }
+            },
+            "examples": {
+              "without superadmin role": {
+                "description": "without login as superadmin when register an admin",
+                "value": {
+                  "message": "login as superadmin needed"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict register user",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string"
+                }
+              }
+            },
+            "examples": {
+              "username exsist": {
+                "description": "username already exsist in database",
+                "value": {
+                  "message": "choose another username"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable entity register user",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string"
+                }
+              }
+            },
+            "examples": {
+              "username field undefined": {
+                "description": "username field does not initialize",
+                "value": {
+                  "message": "username field cannot empty"
+                }
+              },
+              "fullname field undefined": {
+                "description": "fullname field does not initialize",
+                "value": {
+                  "message": "fullname field cannot empty"
+                }
+              },
+              "password field undefined": {
+                "description": "password field does not initialize",
+                "value": {
+                  "message": "password field cannot empty"
+                }
+              },
+              "role field undefined": {
+                "description": "role field does not initialize",
+                "value": {
+                  "message": "role field cannot empty"
+                }
+              },
+              "role field wrong": {
+                "description": "role field wrong value",
+                "value": {
+                  "message": "set role to member, admin or superadmin"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/login": {
+      "post": {
+        "tags": ["user"],
+        "summary": "Login user",
+        "description": "Login user with different role, like member, admin, and superadmin",
+        "produces": ["application.json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "username": {
+                  "type": "string",
+                  "required": ["true"],
+                  "minLength": 2,
+                  "default": "gusde"
+                },
+                "password": {
+                  "type": "string",
+                  "minLength": 3,
+                  "required": ["true"],
+                  "default": "123"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success login",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "token": {
+                  "type": "string",
+                  "default": "token"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
