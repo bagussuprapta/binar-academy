@@ -17,6 +17,11 @@ function CarCollection() {
     <div className="container car-collection position-relative">
       <div className="row">
         {cars?.cars?.map((cars) => {
+          const date = new Date(cars.availableAt);
+          var year = date.getFullYear();
+          var month = date.getMonth() + 1;
+          var number = date.getDate();
+          var fecha = number + "/" + month + "/" + year;
           return (
             <CarCard
               key={cars.plate}
@@ -28,6 +33,7 @@ function CarCollection() {
               capacity={cars.capacity}
               transmision={cars.transmision}
               year={cars.year}
+              availableAt={fecha}
             />
           );
         })}
