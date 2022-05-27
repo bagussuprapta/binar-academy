@@ -20,7 +20,7 @@ module.exports = {
       if (await carRepository.api.v1.carRepository.findByPlate(reqBody.plate))
         throw { status: 409, message: `${reqBody.plate} already exsist` };
       reqBody.createdBy = user.username;
-      reqBody.lastUpdatedBy = user.username;
+      reqBody.updatedBy = user.username;
       return await carRepository.api.v1.carRepository.save(reqBody);
     } catch (err) {
       throw err;
