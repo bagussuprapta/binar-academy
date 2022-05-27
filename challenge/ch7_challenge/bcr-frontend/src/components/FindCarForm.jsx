@@ -4,13 +4,13 @@ function FindCarForm() {
   return (
     <div className="rounded container border find-car-form mt-3 position-relative">
       <div className="row align-items-center justify-content-center">
-        <div className="col-sm-3">
+        <div className="col">
           <div className="form-outline">
-            <label htmlFor="">Tipe Driver</label>
+            <label htmlFor="">Driver Type <span className="require-from-mark">*</span></label>
             <div className="input-group">
               <select className="form-select">
-                <option value="1">Dengan Supir</option>
-                <option value="2">Tanpa Supir (Lepas Kunci)</option>
+                <option value="1">With Driver</option>
+                <option value="2">Without Driver</option>
               </select>
               <div className="input-group-text">
                 <svg
@@ -18,7 +18,7 @@ function FindCarForm() {
                   width="16"
                   height="16"
                   fill="currentColor"
-                  class="bi bi-person-bounding-box"
+                  className="bi bi-person-bounding-box"
                   viewBox="0 0 16 16"
                 >
                   <path d="M1.5 1a.5.5 0 0 0-.5.5v3a.5.5 0 0 1-1 0v-3A1.5 1.5 0 0 1 1.5 0h3a.5.5 0 0 1 0 1h-3zM11 .5a.5.5 0 0 1 .5-.5h3A1.5 1.5 0 0 1 16 1.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 1-.5-.5zM.5 11a.5.5 0 0 1 .5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 1 0 1h-3A1.5 1.5 0 0 1 0 14.5v-3a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v3a1.5 1.5 0 0 1-1.5 1.5h-3a.5.5 0 0 1 0-1h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 1 .5-.5z" />
@@ -28,10 +28,10 @@ function FindCarForm() {
             </div>
           </div>
         </div>
-        <div className="col-sm-3">
+        <div className="col">
           <div className="form-outline">
             <div className="col-auto">
-              <label htmlFor="specificSizeInputGroupUsername">Tanggal</label>
+              <label htmlFor="specificSizeInputGroupUsername">Date  <span className="require-from-mark">*</span></label>
               <div className="input-group">
                 <input
                   id="date"
@@ -45,7 +45,7 @@ function FindCarForm() {
                     width="16"
                     height="16"
                     fill="currentColor"
-                    class="bi bi-calendar-week"
+                    className="bi bi-calendar-week"
                     viewBox="0 0 16 16"
                   >
                     <path d="M11 6.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm-3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm-5 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1z" />
@@ -56,9 +56,9 @@ function FindCarForm() {
             </div>
           </div>
         </div>
-        <div className="col-sm-3">
+        <div className="col">
           <div className="form-outline">
-            <label htmlFor="">Waktu Jemput/Ambil</label>
+            <label htmlFor="">Pick Up Time  <span className="require-from-mark">*</span></label>
             <div className="input-group">
               <select className="form-select">
                 <option value="1">08:00</option>
@@ -73,7 +73,7 @@ function FindCarForm() {
                   width="16"
                   height="16"
                   fill="currentColor"
-                  class="bi bi-key-fill"
+                  className="bi bi-key-fill"
                   viewBox="0 0 16 16"
                 >
                   <path d="M3.5 11.5a3.5 3.5 0 1 1 3.163-5H14L15.5 8 14 9.5l-1-1-1 1-1-1-1 1-1-1-1 1H6.663a3.5 3.5 0 0 1-3.163 2zM2.5 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
@@ -82,10 +82,10 @@ function FindCarForm() {
             </div>
           </div>
         </div>
-        <div className="col-sm-3">
+        <div className="col">
           <div className="form-outline">
             <label htmlFor="specificSizeInputGroupUsername">
-              Jumlah Penumpang (Optional)
+              Passenger
             </label>
             <div className="input-group">
               <input
@@ -112,6 +112,11 @@ function FindCarForm() {
                 </svg>
               </div>
             </div>
+          </div>
+        </div>
+        <div className="col-1">
+          <div className="form-outline">
+            <button className="btn btn-success search-car-button">Search</button>
           </div>
         </div>
       </div>

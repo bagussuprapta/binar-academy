@@ -1,0 +1,11 @@
+.icon-car-card {
+  height: 20px;
+  width: 20px;
+  position: relative;
+  top: -2px;
+  margin-right: 8px;
+}
+
+.choose-car {
+  width: 100%;
+}

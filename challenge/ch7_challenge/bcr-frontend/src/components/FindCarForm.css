@@ -3,3 +3,11 @@
   background-color: white;
   padding: 50px 60px 60px;
 }
+
+.search-car-button {
+  margin-top: 21px;
+}
+
+.require-from-mark {
+  color: red;
+}
