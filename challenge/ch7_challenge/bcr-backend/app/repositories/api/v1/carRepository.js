@@ -8,7 +8,7 @@ module.exports = {
   async availableDate(date, cars) {
     console.log(date);
     return await Cars.findAll({
-      where: sequelize.where(sequelize.fn('date', sequelize.col('availableAt')), '<', date)
+      where: sequelize.where(sequelize.fn('date', sequelize.col('availableAt')), '>', date)
     });
   },
 
