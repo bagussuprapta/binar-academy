@@ -93,6 +93,10 @@ class CarController extends ApplicationController {
         rentEndedAt,
       });
 
+      await this.carModel.update({
+        isCurrentlyRented: true,
+      }, {where: {id: req.params.id}});
+
       res.status(201).json(userCar)
     }
 
@@ -112,15 +116,15 @@ class CarController extends ApplicationController {
 
       const car = this.getCarFromRequest(req);
 
-      await car.update({
+      await this.carModel.update({
         name,
         price,
         size,
         image,
         isCurrentlyRented: false,
-      });
+      }, {where: {id: req.params.id}});
 
-      res.status(200).json(car);
+      res.status(201).json({"message": "sukses update mama"});
     }
 
     catch(err) {
@@ -134,8 +138,8 @@ class CarController extends ApplicationController {
   }
 
   handleDeleteCar = async (req, res) => {
-    const car = await this.carModel.destroy(req.params.id); 
-    res.status(204).end();
+    const car = await this.carModel.destroy({where: {id: req.params.id}}); 
+    res.status(200).json({"message": "sukses hapus mama"});
   }
 
   getCarFromRequest(req) {
