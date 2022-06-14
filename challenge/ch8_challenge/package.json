@@ -40,6 +40,7 @@
     "transform": {
       "^.+\\.[t|j]sx?$": "babel-jest"
     },
-    "bail": true
+    "bail": true,
+    "collectCoverage": true
   }
 }
