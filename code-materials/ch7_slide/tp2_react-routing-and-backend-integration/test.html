@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <input type="file" onchange="readFile(this)" class="test2">
+  <button class="test">Test</button>
+
+  <script>
+    function readFile(input) {
+      const test2 = document.getElementsByClassName("test2");
+      console.log(test2);
+
+      console.log(input);
+      let file = input.files[0];
+
+      let reader = new FileReader();
+
+      reader.readAsText(file);
+      console.log(reader);
+      reader.addEventListener("load", () => {
+        console.log("loaded");
+      })
+
+      reader.onload = function () {
+        console.log(reader.result);
+      };
+
+      reader.onerror = function () {
+        console.log(reader.error);
+      };
+
+    }
+
+    const test = document.getElementsByClassName("test");
+    console.log(test);
+  </script>
+</body>
+
+</html>

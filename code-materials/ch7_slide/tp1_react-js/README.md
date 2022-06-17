@@ -1,0 +1,1 @@
+Slide 39 dan 42 sama

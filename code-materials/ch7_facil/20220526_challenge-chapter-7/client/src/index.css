@@ -1,0 +1,238 @@
+body {
+  font-family: Helvetica;
+  font-size: 14px;
+  font-weight: 300;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
+
+.blocking {
+  width: 100%;
+  position: fixed;
+  height: 100%;
+  background-color: black;
+  z-index: 1;
+  opacity: 0.5;
+  display: none;
+}
+
+.bcr {
+  font-weight: bold;
+}
+
+.navbar {
+  background-color: #f1f3ff;
+}
+
+.nav-collapse {
+  position: fixed;
+  right: 0;
+  top: 0;
+  box-shadow: 200px 200px black;
+  z-index: 2;
+}
+
+.isi {
+  padding: 20px;
+  width: 12rem;
+  background-color: white;
+  height: 100vh;
+}
+
+.isi a {
+  display: block;
+}
+
+.btn-regis {
+  background-color: #5cb85f;
+  color: white;
+  font-weight: bold;
+}
+
+.jumbotron {
+  background-color: #f1f3ff;
+  min-height: 10rem;
+}
+
+.main {
+  font-weight: bold;
+  font-size: 36px;
+}
+
+.car {
+  max-width: 40rem;
+}
+
+.service {
+  margin-top: 150px;
+}
+
+.check {
+  margin-right: 15px;
+}
+
+.services {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.whyus {
+  margin-top: 100px;
+}
+
+.whyus-text>h3 {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.whyus .card {
+  padding: 10px;
+  background-color: #f1f3ff;
+}
+
+.card-img-top {
+  width: 2rem;
+  height: 2rem;
+}
+
+.card-title-text {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.testi {
+  margin-top: 100px;
+}
+
+.testi .card {
+  background-color: #f1f3ff;
+  margin: 10px;
+  max-width: 619px;
+}
+
+.testi-text {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.owl-item {
+  width: 300px;
+}
+
+.container-btn>* {
+  font-weight: bolder;
+  margin: 10px;
+  border: 1px #c4c4c4;
+}
+
+.container-btn>*:hover {
+  background-color: #5cb85f;
+  color: white;
+}
+
+.sewa {
+  width: 100%;
+  background-color: #0d28a6;
+  padding: 50px;
+  color: white;
+  border-radius: 10px;
+}
+
+.sewa-text {
+  font-size: 36px;
+  font-weight: bold;
+}
+
+.test {
+  width: 7rem;
+}
+
+.rate {
+  width: 5rem;
+}
+
+.faq {
+  margin-top: 100px;
+}
+
+.faq-text>h3 {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+@media (max-width: 570px) {
+  .faq-text {
+    text-align: center;
+  }
+
+  .whyus .card {
+    background-color: white;
+  }
+
+  .whyus-text {
+    text-align: center;
+  }
+
+  .test {
+    padding-top: 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer .row>* {
+    margin-top: 10px;
+  }
+
+  .cars-container img {
+    height: 120vw;
+  }
+}
+
+@media (max-width: 992px) {
+  .filter {
+    position: static !important;
+    margin-top: 20px !important;
+  }
+}
+
+.accordion-item {
+  margin-top: 10px;
+}
+
+.accordion-body {
+  border: 1px solid #d4d4d4;
+}
+
+.accordion-header {
+  border: 1px solid #d4d4d4;
+  border-radius: 3px;
+}
+
+.footer {
+  margin-top: 100px;
+  margin-bottom: 20px;
+}
+
+.time {
+  background-image: url("/public/img/clock-svgrepo-com.svg");
+}
+
+.filter {
+  top: -4rem;
+  width: 75%;
+  margin: auto;
+  /* margin: 0 1rem 0 1rem; */
+  padding: 2rem 1rem 2rem 1rem;
+  position: relative;
+  background-color: white;
+  box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+}
+
+.cars-container img {
+  height: 30vw;
+  object-fit: cover;
+}

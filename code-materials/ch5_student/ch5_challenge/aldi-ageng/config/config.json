@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "aokcplci",
+    "password": "1Eq0iiTS4Q0jwiy19-kPJLlpIFDi1b-X",
+    "database": "aokcplci",
+    "host": "rosie.db.elephantsql.com",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "postgres",
+    "password": "root",
+    "database": "db_binar_car_rental",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "postgres",
+    "password": "root",
+    "database": "db_binar_car_rental",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  }
+}

@@ -1,0 +1,1 @@
+- Slide no 23, 31, dan 43 terdapat link repository, ini merupakan repo yang sama
