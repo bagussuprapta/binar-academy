@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  h1= title
+  p(id="idid") Welcome to #{title}
+  form(action="stylesheets/style.css")
+    input(type="text", name="", placeholder="#{title}")
+    input(type="submit", value="Submit")
+    input(type="button", value="Test")
+  p.
+    Hallo..Nama saya bintang.
+    Saat ini saya berumur 19 tahun.
+    Hobi saya adalah berolahraga.
+  - var n = 4
+  div
+    - for (let i = 0; i <= n; i++){
+      p Hello
+    - }
+  script.
+    alert("Hello");
+    const idid = document.getElementById("idid");
+    idid.textContent = "Haha to #{title}";
+  p Test
